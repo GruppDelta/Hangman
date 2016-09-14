@@ -16,6 +16,7 @@ namespace Hangman_1._0
         static string story;
         static string guessedWord = string.Empty;
         static string jimmysKalsonger = "Svarta";
+        static string name = "player";
 
         static void Main(string[] args)
         {
