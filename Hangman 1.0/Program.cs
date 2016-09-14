@@ -160,11 +160,7 @@ namespace Hangman_1._0
                 Console.WriteLine("Player life: " + playerLife);
                 GuessedWord();
                 WrongGuess();
-                if (guessedWord == randomWord)
-                {
-                    isGameOver = true;
-                }
-                else if (playerLife < 1)
+                if (guessedWord == randomWord || playerLife < 1)
                 {
                     isGameOver = true;
                 }
@@ -189,18 +185,16 @@ namespace Hangman_1._0
         static void WinOrLose(bool win)
         {
             //  Vinst eller förlust
+            Console.Clear();
             if (win == true)
             {
-                Console.Clear();
                 Console.WriteLine("You win!");
-                Console.ReadKey();
             }
             else
             {
-                Console.Clear();
                 Console.WriteLine("You lose!");
-                Console.ReadKey();
             }
+            Console.ReadKey();
         }
         static void GameEnd()
         {
