@@ -12,6 +12,7 @@ namespace Hangman_1._0
         static int playerLife;
         static string randomWord;
         static bool isGameOver = false;
+        static bool isProgramEnding = false;
         //static string usedLetters;
         //static string inputLetter;
         static string story;
@@ -21,7 +22,13 @@ namespace Hangman_1._0
         {
             WelcomeGFX();
             PlayerName();
-            StoryLine();
+            while (!isProgramEnding)
+            {
+                StoryLine();
+                RandomWord();
+                GameLoop();
+                GameEnd();
+            }
             Console.ReadKey();
         }
         static void WelcomeGFX()
@@ -98,14 +105,12 @@ namespace Hangman_1._0
                 playerName = Console.ReadLine();
             }
             while (playerName.Length < 3);
-            Console.Clear();
-            Console.WriteLine("Hi " + playerName + ", welcome to Hangman 1.0.");
-            Console.ReadKey();
         }
         static void StoryLine()
         {
             //  Storyline
             Console.Clear();
+            Console.WriteLine("Hi " + playerName + ", welcome to Hangman 1.0.\n");
             Console.WriteLine("Select difficulty:\n");
             Console.WriteLine("1 - Easy");
             Console.WriteLine("2 - Medium");
@@ -113,7 +118,6 @@ namespace Hangman_1._0
             Console.WriteLine("4 - !!! DANGER ZONE !!!\n");
             Console.Write("Pick storyline: ");
             story = Console.ReadLine();
-            RandomWord();
         }
         static void RandomWord()
         {
@@ -140,7 +144,6 @@ namespace Hangman_1._0
                     StoryLine();
                     break;
             }
-            GameLoop();
         }
         static void GuessedWord()
         {
@@ -151,7 +154,6 @@ namespace Hangman_1._0
         {
             //  Spelloop
             Console.Clear();
-            GuessedWord();
 
             while (!isGameOver)
             {
@@ -167,6 +169,14 @@ namespace Hangman_1._0
                     isGameOver = true;
                 }
             }
+            if (guessedWord == randomWord)
+            {
+                WinOrLose(true);
+            }
+            else
+            {
+                WinOrLose(false);
+            }
         }
 
         static void WrongGuess()
@@ -175,8 +185,6 @@ namespace Hangman_1._0
             {
                 playerLife--;
             }
-            else
-            { }
         }
         static void WinOrLose(bool win)
         {
@@ -193,23 +201,23 @@ namespace Hangman_1._0
                 Console.WriteLine("You lose!");
                 Console.ReadKey();
             }
-            GameEnd();
         }
         static void GameEnd()
         {
             //  Programavslut
+
             Console.Write("Play again? (Y/N)");
-            string again = Console.ReadLine();
-            again = again.ToUpper();
+            string again = Console.ReadLine().ToUpper();
 
             switch (again)
             {
                 case "Y":
-                    StoryLine();
+                    isGameOver = false;
                     break;
                 case "N":
                     Console.Clear();
                     Console.WriteLine("Thanks for playing! /h@xx");
+                    isProgramEnding = true;
                     break;
                 default:
                     GameEnd();
