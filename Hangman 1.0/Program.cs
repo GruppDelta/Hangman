@@ -11,13 +11,11 @@ namespace Hangman_1._0
         static string playerName;
         static int playerLife;
         static string randomWord;
+        static bool isGameOver = false;
         //static string usedLetters;
         //static string inputLetter;
         static string story;
         static string guessedWord = string.Empty;
-        static string jimmysKalsonger = "Svarta";
-        static string name = "player";
-        static string test;
 
         static void Main(string[] args)
         {
@@ -64,38 +62,42 @@ namespace Hangman_1._0
         static void PlayerName()
         {
             //  Namninmatning
-            Console.Clear();
-            Console.WriteLine(" ╔════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗");
-            Console.WriteLine(" ║                                                                                                                    ║");
-            Console.WriteLine(" ║                                                                                                                    ║");
-            Console.WriteLine(" ║                                                                                                                    ║");
-            Console.WriteLine(" ║                                                                                                                    ║");
-            Console.WriteLine(" ║                      ██░ ██  ▄▄▄       ███▄    █   ▄████  ███▄ ▄███▓ ▄▄▄       ███▄    █                           ║");
-            Console.WriteLine(" ║                     ▓██░ ██▒▒████▄     ██ ▀█   █  ██▒ ▀█▒▓██▒▀█▀ ██▒▒████▄     ██ ▀█   █                           ║");
-            Console.WriteLine(" ║                     ▒██▀▀██░▒██  ▀█▄  ▓██  ▀█ ██▒▒██░▄▄▄░▓██    ▓██░▒██  ▀█▄  ▓██  ▀█ ██▒                          ║");
-            Console.WriteLine(" ║                     ░▓█ ░██ ░██▄▄▄▄██ ▓██▒  ▐▌██▒░▓█  ██▓▒██    ▒██ ░██▄▄▄▄██ ▓██▒  ▐▌██▒                          ║");
-            Console.WriteLine(" ║                     ░▓█▒░██▓ ▓█   ▓██▒▒██░   ▓██░░▒▓███▀▒▒██▒   ░██▒ ▓█   ▓██▒▒██░   ▓██░                          ║");
-            Console.WriteLine(" ║                      ▒ ░░▒░▒ ▒▒   ▓▒█░░ ▒░   ▒ ▒  ░▒   ▒ ░ ▒░   ░  ░ ▒▒   ▓▒█░░ ▒░   ▒ ▒                           ║");
-            Console.WriteLine(" ║                     ▒ ░▒░ ░  ▒   ▒▒ ░░ ░░   ░ ▒░  ░   ░ ░  ░      ░  ▒   ▒▒ ░░ ░░   ░ ▒░                           ║");
-            Console.WriteLine(" ║                      ░  ░░ ░  ░   ▒      ░   ░ ░ ░ ░   ░ ░      ░     ░   ▒      ░   ░ ░                           ║");
-            Console.WriteLine(" ║                     ░  ░  ░      ░  ░         ░       ░        ░         ░  ░         ░                            ║");
-            Console.WriteLine(" ║                                                                                                                    ║");
-            Console.WriteLine(" ║                                                                                                                    ║");
-            Console.WriteLine(" ║                                                                                                                    ║");
-            Console.WriteLine(" ╠════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╣");
-            Console.WriteLine(" ║                                                                                                                    ║");
-            Console.WriteLine(" ║                                                                                                                    ║");
-            Console.WriteLine(" ║                                                                                                                    ║");
-            Console.WriteLine(" ║                                                                                                                    ║");
-            Console.WriteLine(" ║                    ENTER THE NAME OF THE FOOLISH MORTAL WHO DARES ATTEMPT THIS GAME                                ║");
-            Console.WriteLine(" ║                                                                                                                    ║");
-            Console.WriteLine(" ║                                                                                                                    ║");
-            Console.WriteLine(" ║                                                                                                                    ║");
-            Console.WriteLine(" ║                                                                                                                    ║");
-            Console.WriteLine(" ║                                                                                                                    ║");
-            Console.WriteLine(" ╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝");
-            Console.Write("Name: ");
-            playerName = Console.ReadLine();
+            do
+            {
+                Console.Clear();
+                Console.WriteLine(" ╔════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗");
+                Console.WriteLine(" ║                                                                                                                    ║");
+                Console.WriteLine(" ║                                                                                                                    ║");
+                Console.WriteLine(" ║                                                                                                                    ║");
+                Console.WriteLine(" ║                                                                                                                    ║");
+                Console.WriteLine(" ║                      ██░ ██  ▄▄▄       ███▄    █   ▄████  ███▄ ▄███▓ ▄▄▄       ███▄    █                           ║");
+                Console.WriteLine(" ║                     ▓██░ ██▒▒████▄     ██ ▀█   █  ██▒ ▀█▒▓██▒▀█▀ ██▒▒████▄     ██ ▀█   █                           ║");
+                Console.WriteLine(" ║                     ▒██▀▀██░▒██  ▀█▄  ▓██  ▀█ ██▒▒██░▄▄▄░▓██    ▓██░▒██  ▀█▄  ▓██  ▀█ ██▒                          ║");
+                Console.WriteLine(" ║                     ░▓█ ░██ ░██▄▄▄▄██ ▓██▒  ▐▌██▒░▓█  ██▓▒██    ▒██ ░██▄▄▄▄██ ▓██▒  ▐▌██▒                          ║");
+                Console.WriteLine(" ║                     ░▓█▒░██▓ ▓█   ▓██▒▒██░   ▓██░░▒▓███▀▒▒██▒   ░██▒ ▓█   ▓██▒▒██░   ▓██░                          ║");
+                Console.WriteLine(" ║                      ▒ ░░▒░▒ ▒▒   ▓▒█░░ ▒░   ▒ ▒  ░▒   ▒ ░ ▒░   ░  ░ ▒▒   ▓▒█░░ ▒░   ▒ ▒                           ║");
+                Console.WriteLine(" ║                     ▒ ░▒░ ░  ▒   ▒▒ ░░ ░░   ░ ▒░  ░   ░ ░  ░      ░  ▒   ▒▒ ░░ ░░   ░ ▒░                           ║");
+                Console.WriteLine(" ║                      ░  ░░ ░  ░   ▒      ░   ░ ░ ░ ░   ░ ░      ░     ░   ▒      ░   ░ ░                           ║");
+                Console.WriteLine(" ║                     ░  ░  ░      ░  ░         ░       ░        ░         ░  ░         ░                            ║");
+                Console.WriteLine(" ║                                                                                                                    ║");
+                Console.WriteLine(" ║                                                                                                                    ║");
+                Console.WriteLine(" ║                                                                                                                    ║");
+                Console.WriteLine(" ╠════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╣");
+                Console.WriteLine(" ║                                                                                                                    ║");
+                Console.WriteLine(" ║                                                                                                                    ║");
+                Console.WriteLine(" ║                                                                                                                    ║");
+                Console.WriteLine(" ║                                                                                                                    ║");
+                Console.WriteLine(" ║                    ENTER THE NAME OF THE FOOLISH MORTAL WHO DARES ATTEMPT THIS GAME                                ║");
+                Console.WriteLine(" ║                                                                                                                    ║");
+                Console.WriteLine(" ║                                                                                                                    ║");
+                Console.WriteLine(" ║                                                                                                                    ║");
+                Console.WriteLine(" ║                                                                                                                    ║");
+                Console.WriteLine(" ║                                                                                                                    ║");
+                Console.WriteLine(" ╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝");
+                Console.Write("Name: ");
+                playerName = Console.ReadLine();
+            }
+            while (playerName.Length < 3);
             Console.Clear();
             Console.WriteLine("Hi " + playerName + ", welcome to Hangman 1.0.");
             Console.ReadKey();
@@ -108,7 +110,7 @@ namespace Hangman_1._0
             Console.WriteLine("1 - Easy");
             Console.WriteLine("2 - Medium");
             Console.WriteLine("3 - Hard");
-            Console.WriteLine("4 - Ultra hard\n");
+            Console.WriteLine("4 - !!! DANGER ZONE !!!\n");
             Console.Write("Pick storyline: ");
             story = Console.ReadLine();
             RandomWord();
@@ -142,7 +144,7 @@ namespace Hangman_1._0
         }
         static void GuessedWord()
         {
-            Console.Write("Gissa ord: ");
+            Console.Write("Guess word: ");
             guessedWord = Console.ReadLine().ToLower();
         }
         static void GameLoop()
@@ -151,22 +153,48 @@ namespace Hangman_1._0
             Console.Clear();
             GuessedWord();
 
-            if (guessedWord == randomWord && playerLife > 0)
+            while (!isGameOver)
             {
-                WinOrLose(true);
-            }
-            else if (guessedWord != randomWord && playerLife > 0)
-            {
-                Console.WriteLine("Wrong word!");
-                playerLife--;
                 Console.WriteLine("Player life: " + playerLife);
-                Console.ReadKey();
-                GameLoop();
+                GuessedWord();
+                WrongGuess();
+                if (guessedWord == randomWord)
+                {
+                    isGameOver = true;
+                }
+                else if (playerLife < 1)
+                {
+                    Console.WriteLine("you lose continue");
+                    isGameOver = true;
+                    Console.ReadKey();
+                }
             }
-            else
+
+            //if (guessedWord == randomWord && playerLife > 0)
+            //{
+            //    WinOrLose(true);
+            //}
+            //else if (guessedWord != randomWord && playerLife > 0)
+            //{
+            //    Console.WriteLine("Wrong word!");
+            //    playerLife--;
+            //    Console.WriteLine("Player life: " + playerLife);
+            //    Console.ReadKey();
+            //    GameLoop();
+            //}
+            //else
+            //{
+            //    WinOrLose(false);
+            //}
+        }
+
+        static void WrongGuess()
+        {
+            if (guessedWord != randomWord)
             {
-                WinOrLose(false);
+                playerLife--;
             }
+            else { }
         }
         static void WinOrLose(bool win)
         {
