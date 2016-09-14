@@ -164,28 +164,9 @@ namespace Hangman_1._0
                 }
                 else if (playerLife < 1)
                 {
-                    Console.WriteLine("you lose continue");
                     isGameOver = true;
-                    Console.ReadKey();
                 }
             }
-
-            //if (guessedWord == randomWord && playerLife > 0)
-            //{
-            //    WinOrLose(true);
-            //}
-            //else if (guessedWord != randomWord && playerLife > 0)
-            //{
-            //    Console.WriteLine("Wrong word!");
-            //    playerLife--;
-            //    Console.WriteLine("Player life: " + playerLife);
-            //    Console.ReadKey();
-            //    GameLoop();
-            //}
-            //else
-            //{
-            //    WinOrLose(false);
-            //}
         }
 
         static void WrongGuess()
@@ -194,7 +175,8 @@ namespace Hangman_1._0
             {
                 playerLife--;
             }
-            else { }
+            else
+            { }
         }
         static void WinOrLose(bool win)
         {
