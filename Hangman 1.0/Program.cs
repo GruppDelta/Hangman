@@ -189,7 +189,7 @@ namespace Hangman_1._0
         }
         static int NumberGenerator()            //  Nummergenerator
         {
-            int randomNumber = rnd.Next(1, storyLine.Length);
+            int randomNumber = rnd.Next(0, storyLine.Length - 1);
             return randomNumber;
         }
         static void GuessedWord()               //  Gissa ord
