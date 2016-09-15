@@ -10,6 +10,10 @@ namespace Hangman_1._0
     {
         static string playerName;
         static int playerLife;
+        static string[] storyLine = new string[5];
+        static string category;
+        static int randomNumber;
+        static Random rnd = new Random();
         static string randomWord;
         static bool isGameOver = false;
         static bool isProgramEnding = false;
@@ -25,15 +29,13 @@ namespace Hangman_1._0
             while (!isProgramEnding)
             {
                 StoryLine();
-                RandomWord();
                 GameLoop();
                 GameEnd();
             }
             Console.ReadKey();
         }
-        static void WelcomeGFX()
+        static void WelcomeGFX()                //  Välkomstgrafik; Delta Squad Entertainment
         {
-            //  Välkomstgrafik
             Console.Clear();
             Console.WriteLine(" ╔════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗");
             Console.WriteLine(" ║                                                                                                                    ║");
@@ -66,9 +68,8 @@ namespace Hangman_1._0
             Console.WriteLine(" ╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝");
             Console.ReadKey();
         }
-        static void PlayerName()
+        static void PlayerName()                //  Namninmatning och test av stränglängd
         {
-            //  Namninmatning
             do
             {
                 Console.Clear();
@@ -106,9 +107,8 @@ namespace Hangman_1._0
             }
             while (playerName.Length < 3);
         }
-        static void StoryLine()
+        static void StoryLine()                 //  Presentation av storylines/svårighetsgrader
         {
-            //  Storyline
             Console.Clear();
             Console.WriteLine("Hi " + playerName + ", welcome to Hangman 1.0.\n");
             Console.WriteLine("Select difficulty:\n");
@@ -117,74 +117,128 @@ namespace Hangman_1._0
             Console.WriteLine("3 - Hard");
             Console.WriteLine("4 - !!! DANGER ZONE !!!\n");
             Console.Write("Pick storyline: ");
-            story = Console.ReadLine();
+            RandomWord(story = Console.ReadLine());
         }
-        static void RandomWord()
+        static void RandomWord(string choice)   //  Val av storyline
         {
-            //  Ordgenerator
             switch (story)
             {
                 case "1":
-                    randomWord = "banan";
-                    playerLife = 10;
+                    randomWord = Easy();                
                     break;
                 case "2":
-                    randomWord = "äpple";
-                    playerLife = 8;
+                    randomWord = Medium();
                     break;
                 case "3":
-                    randomWord = "kiwi";
-                    playerLife = 6;
+                    randomWord = Hard();
                     break;
                 case "4":
-                    randomWord = "bappelsin";
-                    playerLife = 4;
+                    randomWord = DangerZone();
                     break;
                 default:
                     StoryLine();
                     break;
             }
         }
-        static void GuessedWord()
+        static string Easy()                    //  Svårighetsgrad; lätt
         {
-            Console.Write("Guess word: ");
-            guessedWord = Console.ReadLine().ToLower();
-        }
-        static void GameLoop()
-        {
-            //  Spelloop
-            Console.Clear();
+            category = "Fruit";
+            playerLife = 10;
+            storyLine[0] = "BANAN";
+            storyLine[1] = "ÄPPLE";
+            storyLine[2] = "PÄRON";
+            storyLine[3] = "KIWI";
+            storyLine[4] = "APELSIN";
 
+            NumberGenerator();
+            return randomWord = storyLine[randomNumber];
+        }
+        static string Medium()                    //  Svårighetsgrad; medel
+        {
+            category = "Fruit";
+            playerLife = 8;
+            storyLine[0] = "BANAN";
+            storyLine[1] = "ÄPPLE";
+            storyLine[2] = "PÄRON";
+            storyLine[3] = "KIWI";
+            storyLine[4] = "APELSIN";
+
+            NumberGenerator();
+            return randomWord = storyLine[randomNumber];
+        }
+        static string Hard()                    //  Svårighetsgrad; svårt
+        {
+            category = "Fruit";
+            playerLife = 6;
+            storyLine[0] = "BANAN";
+            storyLine[1] = "ÄPPLE";
+            storyLine[2] = "PÄRON";
+            storyLine[3] = "KIWI";
+            storyLine[4] = "APELSIN";
+
+            NumberGenerator();
+            return randomWord = storyLine[randomNumber];
+        }
+        static string DangerZone()                    //  Svårighetsgrad; DANGER ZONE
+        {
+            category = "Fruit";
+            playerLife = 2;
+            storyLine[0] = "BANAN";
+            storyLine[1] = "ÄPPLE";
+            storyLine[2] = "PÄRON";
+            storyLine[3] = "KIWI";
+            storyLine[4] = "APELSIN";
+
+            NumberGenerator();
+            return randomWord = storyLine[randomNumber];
+        }
+        static int NumberGenerator()            //  Nummergenerator
+        {
+            randomNumber = rnd.Next(1, storyLine.Length);
+            return randomNumber;
+        }
+        static void GuessedWord()               //  Gissa ord
+        {
+            Console.WriteLine("You picked category: " + category);
+            Console.WriteLine("The secret word has " + randomWord.Length + " letters.");
+            Console.WriteLine("You have " + playerLife + " guesses left:");
+            Console.Write("Guess word: ");
+            guessedWord = Console.ReadLine().ToUpper();
+        }
+        static void GameLoop()                  //  Spelloop
+        {
             while (!isGameOver)
             {
-                Console.WriteLine("Player life: " + playerLife);
+                Console.Clear();      
                 GuessedWord();
                 WrongGuess();
-                if (guessedWord == randomWord || playerLife < 1)
+                if (guessedWord == randomWord)
                 {
                     isGameOver = true;
+                    WinOrLose(true);
+                }
+                else if (playerLife < 1)
+                {
+                    isGameOver = true;
+                    WinOrLose(false);
+                }
+                else
+                {
+                    Console.WriteLine(guessedWord + " is the wrong word,  please try again. :)");
+                    Console.ReadKey();
+                    isGameOver = false;
                 }
             }
-            if (guessedWord == randomWord)
-            {
-                WinOrLose(true);
-            }
-            else
-            {
-                WinOrLose(false);
-            }
         }
-
-        static void WrongGuess()
+        static void WrongGuess()                //  Räknar ner liv vid fel gissning
         {
             if (guessedWord != randomWord)
             {
                 playerLife--;
             }
         }
-        static void WinOrLose(bool win)
+        static void WinOrLose(bool win)         //  Vinst eller förlust?
         {
-            //  Vinst eller förlust
             Console.Clear();
             if (win == true)
             {
@@ -196,9 +250,8 @@ namespace Hangman_1._0
             }
             Console.ReadKey();
         }
-        static void GameEnd()
+        static void GameEnd()                   //  Avsluta eller spela igen?
         {
-            //  Programavslut
 
             Console.Write("Play again? (Y/N)");
             string again = Console.ReadLine().ToUpper();
