@@ -12,7 +12,6 @@ namespace Hangman_1._0
         static int playerLife;
         static string[] storyLine = new string[5];
         static string category;
-        static int randomNumber;
         static Random rnd = new Random();
         static string randomWord;
         static bool isGameOver = false;
@@ -150,10 +149,9 @@ namespace Hangman_1._0
             storyLine[3] = "KIWI";
             storyLine[4] = "APELSIN";
 
-            NumberGenerator();
-            return randomWord = storyLine[randomNumber];
+            return randomWord = storyLine[NumberGenerator()];
         }
-        static string Medium()                    //  Svårighetsgrad; medel
+        static string Medium()                  //  Svårighetsgrad; medel
         {
             category = "Fruit";
             playerLife = 8;
@@ -163,8 +161,7 @@ namespace Hangman_1._0
             storyLine[3] = "KIWI";
             storyLine[4] = "APELSIN";
 
-            NumberGenerator();
-            return randomWord = storyLine[randomNumber];
+            return randomWord = storyLine[NumberGenerator()];
         }
         static string Hard()                    //  Svårighetsgrad; svårt
         {
@@ -176,10 +173,9 @@ namespace Hangman_1._0
             storyLine[3] = "KIWI";
             storyLine[4] = "APELSIN";
 
-            NumberGenerator();
-            return randomWord = storyLine[randomNumber];
+            return randomWord = storyLine[NumberGenerator()];
         }
-        static string DangerZone()                    //  Svårighetsgrad; DANGER ZONE
+        static string DangerZone()              //  Svårighetsgrad; DANGER ZONE
         {
             category = "Fruit";
             playerLife = 2;
@@ -189,12 +185,11 @@ namespace Hangman_1._0
             storyLine[3] = "KIWI";
             storyLine[4] = "APELSIN";
 
-            NumberGenerator();
-            return randomWord = storyLine[randomNumber];
+            return randomWord = storyLine[NumberGenerator()];
         }
         static int NumberGenerator()            //  Nummergenerator
         {
-            randomNumber = rnd.Next(1, storyLine.Length);
+            int randomNumber = rnd.Next(1, storyLine.Length);
             return randomNumber;
         }
         static void GuessedWord()               //  Gissa ord
