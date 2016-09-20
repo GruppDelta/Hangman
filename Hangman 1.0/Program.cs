@@ -9,7 +9,6 @@ namespace Hangman_1._0
 {
     class Program
     {
-        static string playerName;
         static int playerLife;
         static string[] storyLine = new string[5];
         static string category;
@@ -49,7 +48,7 @@ namespace Hangman_1._0
         static void StoryLine()                 //  Presentation av storylines/svårighetsgrader
         {
             Console.Clear();
-            Console.WriteLine("Hi " + playerName + ", welcome to Hangman 1.0.\n");
+            Console.WriteLine("Hi " + Player.playerName + ", welcome to Hangman 1.0.\n");
             Console.WriteLine("Select difficulty:\n");
             Console.WriteLine("1 - Easy");
             Console.WriteLine("2 - Medium");
