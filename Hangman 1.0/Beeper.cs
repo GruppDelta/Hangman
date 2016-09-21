@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Hangman_1._0
 {
-    class MusicBeeper
+    class Beeper
     {
         //En variabel som styr bpm. Öka den här och allt går snabbare. Minska och allt går långsammare.
         public static double bpm = 120.0;
