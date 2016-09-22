@@ -20,7 +20,7 @@ namespace Hangman_1._0
             isGameOver = false;
 
             GFX.WelcomeGFX();
-            player.PlayerName = player.AskForName();
+            player.AskForName();
             //Startar musiken.
             backgroundMusic.Start();
             while (!isGameOver)

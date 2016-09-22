@@ -13,21 +13,15 @@ namespace Hangman_1._0
         public string PlayerName
         {
             get { return playerName; }
-            set { playerName = value;  }
         }
-        public string AskForName()
+        public void AskForName()
         {
-            string input;
-
             do
             {
                 GFX.PlayerGFX();
                 Console.Write("  Enter your name: ");
-                input = Console.ReadLine();
-            } while (input.Length < 3);
-
-            return input;
+                playerName = Console.ReadLine();
+            } while (playerName.Length < 3);
         }
-        
     }
 }
