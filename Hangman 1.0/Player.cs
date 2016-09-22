@@ -10,13 +10,10 @@ namespace Hangman_1._0
     {
         private string playerName;
 
-        public string GetPlayerInformation()
+        public string PlayerName
         {
-            return playerName;
-        }
-        public void SetPlayerInformation(string input)
-        {
-            playerName = input;
+            get { return playerName; }
+            set { playerName = value;  }
         }
         public string AskForName()
         {
