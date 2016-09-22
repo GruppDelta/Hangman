@@ -9,7 +9,7 @@ namespace Hangman_1._0
     class Beeper
     {
         //En variabel som styr bpm. Öka den här och allt går snabbare. Minska och allt går långsammare.
-        public static double bpm = 120.0;
+        public static double bpm = 40.0;
 
         //Rör inte den här. Den gör matte.
         public static int musicRate = (int)((60.0 / bpm) * 1000);

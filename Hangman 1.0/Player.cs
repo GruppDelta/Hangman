@@ -8,17 +8,29 @@ namespace Hangman_1._0
 {
     class Player
     {
-        public static string playerName;
+        private string playerName;
 
-        public static string PlayerInformation()
+        public string GetPlayerInformation()
         {
+            return playerName;
+        }
+        public void SetPlayerInformation(string input)
+        {
+            playerName = input;
+        }
+        public string AskForName()
+        {
+            string input;
+
             do
             {
                 GFX.PlayerGFX();
                 Console.Write("  Enter your name: ");
-                playerName = Console.ReadLine();
-            } while (playerName.Length < 3);
-            return playerName;
+                input = Console.ReadLine();
+            } while (input.Length < 3);
+
+            return input;
         }
+        
     }
 }

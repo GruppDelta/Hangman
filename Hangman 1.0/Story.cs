@@ -14,13 +14,13 @@ namespace Hangman_1._0
         public static string[] storyLine = new string[5];
         public static Random rnd = new Random();
 
-        public static void StoryLine() //  Storyline
+        public static void StoryLine(string playerName) //  Storyline
         {
 
             string story;
             Console.Clear();
             Console.WriteLine("----------------------------------");
-            Console.WriteLine("\n\t    Hi " + Player.playerName + "!");
+            Console.WriteLine("\n\t    Hi " + playerName + "!");
             Console.WriteLine("\n      Welcome to Hangman 1.0\n");
             Console.WriteLine("----------------------------------");
             Console.WriteLine("\tSelect difficulty:\n");
@@ -45,7 +45,6 @@ namespace Hangman_1._0
                 case "4":
                     return randomWord = DangerZone();
                 default:
-                    StoryLine();
                     return randomWord;
 
             }
