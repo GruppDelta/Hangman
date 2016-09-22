@@ -9,10 +9,10 @@ namespace Hangman_1._0
     class Beeper
     {
         //En variabel som styr bpm. Öka den här och allt går snabbare. Minska och allt går långsammare.
-        public static double bpm = 40.0;
+        private static double bpm = 40.0;
 
         //Rör inte den här. Den gör matte.
-        public static int musicRate = (int)((60.0 / bpm) * 1000);
+        private static int musicRate = (int)((60.0 / bpm) * 1000);
 
         //Här är typ "namn" för vanliga grejer jag använder i programmet. Istället för att ha i huvudet att varje gång jag skriver 0.25 så menar jag en fjärdedelsnot. Så gjorde jag en namnlista med dem typ.
         public struct Music
@@ -47,7 +47,7 @@ namespace Hangman_1._0
         //Jag tyckte koden blev så grötig av att skriva 
         //System.Console.Beep((int)Note.e[3], ((int)Music.quarterNote * musicRate));
         //Så jag gjorde en metod som gömmer undan allt det grötiga och kallar på dem med de två saker jag behöver använda varje gång. D.v.s vilken not som ska spelas och hur länge den ska låta.
-        public static void BetterBeep(double note, double length)
+        private static void BetterBeep(double note, double length)
         {
             System.Console.Beep((int)note, (int)(length * musicRate));
         }

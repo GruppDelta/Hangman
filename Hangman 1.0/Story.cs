@@ -8,11 +8,22 @@ namespace Hangman_1._0
 {
     class Story
     {
-        public static string randomWord;
-        public static string category;
-        public static int playerLife;
-        public static string[] storyLine = new string[5];
-        public static Random rnd = new Random();
+        private static string randomWord;
+        private static string category;
+        private static string[] storyLine = new string[5];
+        private static Random rnd = new Random();
+
+        public static string RandomWord
+        {
+            get { return randomWord; }
+            set { randomWord = value; }
+        }
+
+        public static string Category
+        {
+            get { return category; }
+            set { category = value; }
+        }
 
         public static void StoryLine(string playerName) //  Storyline
         {
@@ -30,9 +41,9 @@ namespace Hangman_1._0
             Console.WriteLine("\t4 - DANGER ZONE\n");
             Console.WriteLine("----------------------------------");
             Console.Write("\tPick storyline: ");
-            RandomWord(story = Console.ReadLine());
+            SetRandomWord(story = Console.ReadLine());
         }
-        public static string RandomWord(string choice)   //  Val av storyline
+        public static string SetRandomWord(string choice)   //  Val av storyline
         {
             switch (choice)
             {
@@ -52,7 +63,7 @@ namespace Hangman_1._0
         public static string Easy()                    //  Svårighetsgrad; lätt
         {
             category = "Fruits and berries";
-            playerLife = 10;
+            Player.PlayerLife = 10;
             storyLine[0] = "BANAN";
             storyLine[1] = "ÄPPLE";
             storyLine[2] = "PÄRON";
@@ -64,7 +75,7 @@ namespace Hangman_1._0
         public static string Medium()                  //  Svårighetsgrad; medel
         {
             category = "Fruits and berries";
-            playerLife = 8;
+            Player.PlayerLife = 8;
             storyLine[0] = "BANAN";
             storyLine[1] = "ÄPPLE";
             storyLine[2] = "PÄRON";
@@ -76,7 +87,7 @@ namespace Hangman_1._0
         public static string Hard()                    //  Svårighetsgrad; svårt
         {
             category = "Fruits and berries";
-            playerLife = 6;
+            Player.PlayerLife = 6;
             storyLine[0] = "BANAN";
             storyLine[1] = "ÄPPLE";
             storyLine[2] = "PÄRON";
@@ -88,7 +99,7 @@ namespace Hangman_1._0
         public static string DangerZone()              //  Svårighetsgrad; DANGER ZONE
         {
             category = "Fruits and berries";
-            playerLife = 4;
+            Player.PlayerLife = 4;
             storyLine[0] = "BANAN";
             storyLine[1] = "ÄPPLE";
             storyLine[2] = "PÄRON";

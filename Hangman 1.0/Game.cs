@@ -8,19 +8,26 @@ namespace Hangman_1._0
 {
     class Game
     {
-        public static int rightGuesses;
-        public static int wrongGuesses;
-        public static int playerGuesses;
-        public static string[] maskedWord;
-        public static string[] rightLetters;
-        public static string[] wrongLetters;
-        public static string maskedWordString;
+        private static int rightGuesses;
+        private static int wrongGuesses;
+        private static int playerGuesses;
+        private static string[] maskedWord;
+        private static string[] rightLetters;
+        private static string[] wrongLetters;
+        private static string maskedWordString;
+        private static bool isGameOver = false;
+
+        public static bool IsGameOver
+        {
+            get { return isGameOver; }
+            set { isGameOver = value; }
+        }
 
         public static void GameLoop()      //  Spelloop
         {
             bool isGameLoopOver;
-            Program.isGameOver = false;
-            playerGuesses = Story.playerLife;
+            isGameOver = false;
+            playerGuesses = Player.PlayerLife;
             wrongGuesses = 0;
             rightGuesses = 0;
             ArrayInitiation();
@@ -29,27 +36,27 @@ namespace Hangman_1._0
             {
                 isGameLoopOver = GameEngine();
                 maskedWordString = TempString(maskedWord);
-            } while (Story.randomWord != maskedWordString && isGameLoopOver == false);
+            } while (Story.RandomWord != maskedWordString && isGameLoopOver == false);
             PlayingField();
             GameResult(isGameLoopOver);
         }
         public static void ArrayInitiation()        //  Initierar alla fält.
         {
-            maskedWord = new string[Story.randomWord.Length];
-            rightLetters = new string[Story.randomWord.Length];
-            wrongLetters = new string[Story.playerLife];
+            maskedWord = new string[Story.RandomWord.Length];
+            rightLetters = new string[Story.RandomWord.Length];
+            wrongLetters = new string[Player.PlayerLife];
             //  Initierar fälten och lägger in minustecken för varje bokstav i det dolda ordet.
-            for (int hiddenLetter = 0; hiddenLetter < Story.randomWord.Length; hiddenLetter++)
+            for (int hiddenLetter = 0; hiddenLetter < Story.RandomWord.Length; hiddenLetter++)
             {
                 maskedWord[hiddenLetter] = "-";
             }
             //  Initierar fälten för korrekta gissningar.
-            for (int hiddenLetter = 0; hiddenLetter < Story.randomWord.Length; hiddenLetter++)
+            for (int hiddenLetter = 0; hiddenLetter < Story.RandomWord.Length; hiddenLetter++)
             {
                 rightLetters[hiddenLetter] = " ";
             }
             //  Initierar fälten för felaktiga gissningar.
-            for (int hiddenLetter = 0; hiddenLetter < Story.playerLife; hiddenLetter++)
+            for (int hiddenLetter = 0; hiddenLetter < Player.PlayerLife; hiddenLetter++)
             {
                 wrongLetters[hiddenLetter] = " ";
             }
@@ -69,10 +76,10 @@ namespace Hangman_1._0
         {
             Console.Clear();
             Console.WriteLine("----------------------------------");
-            Console.WriteLine("   Category: " + Story.category);
+            Console.WriteLine("   Category: " + Story.Category);
             Console.WriteLine("----------------------------------");
             Console.Write("\n\tSecret word: ");
-            for (int i = 0; i < Story.randomWord.Length; i++)
+            for (int i = 0; i < Story.RandomWord.Length; i++)
             {
                 Console.Write(maskedWord[i]);
             }
@@ -85,18 +92,18 @@ namespace Hangman_1._0
             }
 
             Console.WriteLine("\n----------------------------------");
-            Console.WriteLine("    You have " + Story.playerLife + " guesses left.");
+            Console.WriteLine("    You have " + Player.PlayerLife + " guesses left.");
             Console.WriteLine("----------------------------------");
             Console.WriteLine("\n\n\n----------------------------------");
         }
         public static bool GameEngine()    //  Spelmotor.
         {
             string input;
-            string[] usedLetters = new string[Story.randomWord.Length];
+            string[] usedLetters = new string[Story.RandomWord.Length];
             bool isGameWon;
             bool isRightGuess;
             //  Har spelaren liv kvar?
-            if (Story.playerLife > 0)
+            if (Player.PlayerLife > 0)
             {
                 {
                     //  Ritar upp spelplan och frågar efter bokstav.
@@ -107,10 +114,10 @@ namespace Hangman_1._0
                     } while (input.Length != 1);
                     isRightGuess = false;
                     //  Finns bokstaven i det dolda ordet?
-                    for (int guessedLetter = 0; guessedLetter < Story.randomWord.Length; guessedLetter++)
+                    for (int guessedLetter = 0; guessedLetter < Story.RandomWord.Length; guessedLetter++)
                     {
                         //  Kollar om bokstaven finns och byter ut minustecken mot denna.
-                        if (input[0] == Story.randomWord[guessedLetter])
+                        if (input[0] == Story.RandomWord[guessedLetter])
                         {
                             maskedWord[guessedLetter] = input;
                             isRightGuess = true;
@@ -140,7 +147,7 @@ namespace Hangman_1._0
                             //  Byter till nästa fält för felaktiga gissningar.
                             wrongGuesses++;
                             //  Räknar ner ett liv.
-                            Story.playerLife--;
+                            Player.PlayerLife--;
                         }
                     }
                     //  Bokstaven finns med i det hemliga ordet.
@@ -148,7 +155,7 @@ namespace Hangman_1._0
                     {
                         bool used = false;
                         //  Kollar om den korrekta gissningen har använts tidigare.
-                        for (int guessedLetter = 0; guessedLetter < Story.randomWord.Length; guessedLetter++)
+                        for (int guessedLetter = 0; guessedLetter < Story.RandomWord.Length; guessedLetter++)
                         {
                             if (input == rightLetters[guessedLetter])
                             {
@@ -256,7 +263,7 @@ namespace Hangman_1._0
                     Console.WriteLine("\n     Press any key to continue\n");
                     Console.WriteLine("----------------------------------");
                     Console.ReadKey();
-                    Program.isGameOver = true;
+                    isGameOver = true;
                     break;
                 default:
                     Restart();
