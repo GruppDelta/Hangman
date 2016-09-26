@@ -47,6 +47,7 @@
     <Compile Include="Game.cs" />
     <Compile Include="GFX.cs" />
     <Compile Include="Beeper.cs" />
+    <Compile Include="Highscore.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -3,15 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace Hangman_1._0
 {
     class Story
     {
         private static string randomWord;
-        private static string category;
-        private static string[] storyLine = new string[5];
-        private static Random rnd = new Random();
+        private static int difficultyLevel;
 
         public static string RandomWord
         {
@@ -19,10 +18,9 @@ namespace Hangman_1._0
             set { randomWord = value; }
         }
 
-        public static string Category
+        public static int DifficultyLevel
         {
-            get { return category; }
-            set { category = value; }
+            get; set;
         }
 
         public static void StoryLine(string playerName) //  Storyline
@@ -37,81 +35,43 @@ namespace Hangman_1._0
             Console.WriteLine("\tSelect difficulty:\n");
             Console.WriteLine("\t1 - Easy");
             Console.WriteLine("\t2 - Medium");
-            Console.WriteLine("\t3 - Hard");
-            Console.WriteLine("\t4 - DANGER ZONE\n");
+            Console.WriteLine("\t3 - Hard\n");
             Console.WriteLine("----------------------------------");
             Console.Write("\tPick storyline: ");
-            SetRandomWord(story = Console.ReadLine());
+            RandomWord = SetRandomWord(story = Console.ReadLine()).ToUpper();
         }
         public static string SetRandomWord(string choice)   //  Val av storyline
         {
-            switch (choice)
+            do
             {
-                case "1":
-                    return randomWord = Easy();
-                case "2":
-                    return randomWord = Medium();
-                case "3":
-                    return randomWord = Hard();
-                case "4":
-                    return randomWord = DangerZone();
-                default:
-                    return randomWord;
+                switch (choice)
+                {
+                    case "1":
+                        DifficultyLevel = 1;
+                        Player.PlayerLife = 10;
+                        return DifficultyAndWord("Easy Words.txt");
+                    case "2":
+                        DifficultyLevel = 2;
+                        Player.PlayerLife = 8;
+                        return DifficultyAndWord("Medium Words.txt");
+                    case "3":
+                        DifficultyLevel = 3;
+                        Player.PlayerLife = 5;
+                        return DifficultyAndWord("Hard Words.txt");
+                    default:
+                        break;
+                }
+                choice = Console.ReadLine();
+            } while (true);
 
-            }
         }
-        public static string Easy()                    //  Svårighetsgrad; lätt
-        {
-            category = "Fruits and berries";
-            Player.PlayerLife = 10;
-            storyLine[0] = "BANAN";
-            storyLine[1] = "ÄPPLE";
-            storyLine[2] = "PÄRON";
-            storyLine[3] = "DADEL";
-            storyLine[4] = "MELON";
 
-            return randomWord = storyLine[NumberGenerator()];
-        }
-        public static string Medium()                  //  Svårighetsgrad; medel
+        private static string DifficultyAndWord(string wordListPath)
         {
-            category = "Fruits and berries";
-            Player.PlayerLife = 8;
-            storyLine[0] = "BANAN";
-            storyLine[1] = "ÄPPLE";
-            storyLine[2] = "PÄRON";
-            storyLine[3] = "DADEL";
-            storyLine[4] = "MELON";
-
-            return randomWord = storyLine[NumberGenerator()];
-        }
-        public static string Hard()                    //  Svårighetsgrad; svårt
-        {
-            category = "Fruits and berries";
-            Player.PlayerLife = 6;
-            storyLine[0] = "BANAN";
-            storyLine[1] = "ÄPPLE";
-            storyLine[2] = "PÄRON";
-            storyLine[3] = "DADEL";
-            storyLine[4] = "MELON";
-
-            return randomWord = storyLine[NumberGenerator()];
-        }
-        public static string DangerZone()              //  Svårighetsgrad; DANGER ZONE
-        {
-            category = "Fruits and berries";
-            Player.PlayerLife = 4;
-            storyLine[0] = "BANAN";
-            storyLine[1] = "ÄPPLE";
-            storyLine[2] = "PÄRON";
-            storyLine[3] = "DADEL";
-            storyLine[4] = "MELON";
-
-            return randomWord = storyLine[NumberGenerator()];
-        }
-        public static int NumberGenerator()            //  Nummergenerator
-        {
-            int randomNumber = rnd.Next(0, storyLine.Length - 1);
-            return randomNumber;
+            Random rnd = new Random();
+            string[] wordList;
+            wordList = File.ReadAllLines(@"Word Lists\" + wordListPath);
+            return wordList[rnd.Next(0, wordList.Length)];
         }
     }
 }

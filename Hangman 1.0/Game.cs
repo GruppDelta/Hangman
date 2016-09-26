@@ -76,8 +76,6 @@ namespace Hangman_1._0
         {
             Console.Clear();
             Console.WriteLine("----------------------------------");
-            Console.WriteLine("   Category: " + Story.Category);
-            Console.WriteLine("----------------------------------");
             Console.Write("\n\tSecret word: ");
             for (int i = 0; i < Story.RandomWord.Length; i++)
             {
@@ -237,6 +235,7 @@ namespace Hangman_1._0
                 Console.WriteLine("----------------------------------");
                 Console.WriteLine("\n     Press any key to continue\n");
                 Console.WriteLine("----------------------------------");
+                Highscore.CalculateScore();
                 Console.ReadKey();
             }
         }
