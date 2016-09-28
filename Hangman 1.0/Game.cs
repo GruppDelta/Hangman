@@ -232,10 +232,12 @@ namespace Hangman_1._0
             else
             {
                 Console.WriteLine("\t    You won!");
+                // Display achieved score to the user as well as determine whether score is eligible for the highscore list 
+                Highscore.CalculateScore();
+                Console.WriteLine("You scored {0} points this game.", Highscore.Score);
                 Console.WriteLine("----------------------------------");
                 Console.WriteLine("\n     Press any key to continue\n");
                 Console.WriteLine("----------------------------------");
-                Highscore.CalculateScore();
                 Console.ReadKey();
             }
         }

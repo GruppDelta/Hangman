@@ -9,78 +9,96 @@ namespace Hangman_1._0
 {
     class Highscore
     {
-
+        // Gathers data from each row from the txt file
         private static string[] highScores;
-        private static string[] splitNames;
-        private static int[] splitScores;
-        private static int gameScore;
-        private static string scoreText;
 
-        public static void CalculateScore()
+        // Splits each row into separate containers for name and points
+        private static string[] splitHighScores;
+
+        // Array with names and points from the list
+        private static string[] highScoreNames;
+        private static int[] highScorePoints;
+
+        private static string[] tempNames;
+        private static int[] tempPoints;
+
+        // Points achieved during the game
+        private static int score;
+
+        private const int maxNumOfScores = 5;
+
+        // Property pertaining to aforementioned points
+        public static int Score
         {
-            gameScore = Player.PlayerLife * Story.DifficultyLevel;
-            Console.Clear();
-            Console.WriteLine(gameScore);
-            Console.ReadKey();
-            CompareScores();
+            get { return score; }
+            set { score = value; }
         }
 
-        private static void CompareScores()
+        // Method referenced in Game.cs
+        public static void CalculateScore()
         {
-            highScores = File.ReadAllLines(@"Highscore\Scores.txt");
-            splitNames = new string[highScores.Length];
-            splitScores = new int[highScores.Length];
-            string[] splitString;
-
-            // Split scores and names
-            for (int i = 0; i < highScores.Length; i++)
-            {
-                splitString = highScores[i].Split(' ');
-                splitNames[i] = splitString[0];
-                splitScores[i] = Int32.Parse(splitString[1]);
-            }
-
-            //int[] tempScore = new int[splitScores.Length + 1];
-            //string[] tempName = new string[splitNames.Length + 1];
-
-            int[] tempScore = new int[splitScores.Length - 1];
-            string[] tempName = new string[splitNames.Length - 1];
-
-            // Determine whether gameScore is eligible for the High scores list
-            for (int i = 0; i < splitScores.Length; i++)
-            {
-                if (gameScore > splitScores[i])
-                {
-
-                    for (int j = i; j < splitScores.Length; j++)
-                    {
-                        tempScore[j] = splitScores[j];
-                        tempName[j] = splitNames[j];
-
-                        if (j + 1 < splitScores.Length)
-                        {
-                            splitScores[j + 1] = tempScore[j];
-                            splitNames[j + 1] = tempName[j];
-                        }
-                    }
-
-                    splitScores[i] = gameScore;
-                    splitNames[i] = Player.PlayerName;
-                }
-            }
-
+            // Score output to the user
+            score = Player.PlayerLife * Story.DifficultyLevel;
+            
+            // Method that determines whether score is eligible for the highscore list
             PrintScore();
         }
 
-        private static void PrintScore()
+        public static void PrintScore()
         {
+            highScores = File.ReadAllLines(@"Highscore.txt");
+            highScoreNames = new string[highScores.Length];
+            highScorePoints = new int[highScores.Length];
+            tempNames = new string[highScores.Length];
+            tempPoints = new int[highScores.Length];
 
-            for (int i = 0; i < splitScores.Length; i++)
+            for (int i = 0; i < highScores.Length; i++)
             {
-                scoreText += splitNames[i] + " " + splitScores[i] + Environment.NewLine;
+                splitHighScores = highScores[i].Split(' ');
+                highScoreNames[i] = splitHighScores[0];
+                highScorePoints[i] = Int32.Parse(splitHighScores[1]);
+                tempNames[i] = highScoreNames[i];
+                tempPoints[i] = highScorePoints[i];
             }
 
-            File.WriteAllText(@"Highscore\Scores.txt", scoreText);
+            IsScoreEligibleForList();
+            WriteData();
+        }
+
+        private static void IsScoreEligibleForList()
+        {
+            for (int i = 0; i < highScores.Length; i++)
+            {
+                if (score >= highScorePoints[i])
+                {
+                    // Replace player and score
+                    highScorePoints[i] = score;
+                    highScoreNames[i] = Player.PlayerName;
+
+                    // Populate each subsequent row with the row above
+                    for (int j = i; j < highScores.Length; j++)
+                    {
+                        // Making sure to discard the 6th element in the array
+                        // 6th element created as a consequence of moving the individual rows 1 step down
+                        if (j + 1 < maxNumOfScores)
+                        {
+                            highScorePoints[j + 1] = tempPoints[j];
+                            highScoreNames[j + 1] = tempNames[j];
+                        }
+                    }
+                    break;
+                }
+            }
+        }
+
+        private static void WriteData()
+        {
+            for (int i = 0; i < highScoreNames.Length; i++)
+            {
+                highScores[i] = highScoreNames[i] + " " + highScorePoints[i];
+            }
+
+            File.WriteAllLines(@"Highscore.txt", highScores);
         }
     }
 }
