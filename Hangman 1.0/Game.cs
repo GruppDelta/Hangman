@@ -8,60 +8,96 @@ namespace Hangman_1._0
 {
     class Game
     {
+        #region Class Variables
+
+        private static bool isGameOver;
         private static int rightGuesses;
         private static int wrongGuesses;
-        private static int playerGuesses;
         private static string[] maskedWord;
         private static string[] rightLetters;
         private static string[] wrongLetters;
-        private static string maskedWordString;
-        private static bool isGameOver = false;
+
+        #endregion
+
+        #region Properties
 
         public static bool IsGameOver
         {
             get { return isGameOver; }
             set { isGameOver = value; }
         }
+        public static int RightGuesses
+        {
+            get { return rightGuesses; }
+            set { rightGuesses = value; }
+        }
+        public static int WrongGuesses
+        {
+            get { return wrongGuesses; }
+            set { wrongGuesses = value; }
+        }
+        public static string[] MaskedWord
+        {
+            get { return maskedWord; }
+            set { maskedWord = value; }
+        }
+        public static string[] RightLetters
+        {
+            get { return rightLetters; }
+            set { rightLetters = value; }
+        }
+        public static string[] WrongLetters
+        {
+            get { return wrongLetters; }
+            set { wrongLetters = value; }
+        }
+
+        #endregion
+
+        #region Game Methods
 
         public static void GameLoop()      //  Spelloop
         {
             bool isGameLoopOver;
-            isGameOver = false;
-            playerGuesses = Player.PlayerLife;
-            wrongGuesses = 0;
-            rightGuesses = 0;
+            string maskedWordString;
+
+
+            MaskedWord = new string[Story.RandomWord.Length];
+            RightLetters = new string[Story.RandomWord.Length];
+            WrongLetters = new string[Player.PlayerLife];
+            RightGuesses = 0;
+            WrongGuesses = 0;
+
             ArrayInitiation();
+
             //  Startar spelloopen.
             do
             {
                 isGameLoopOver = GameEngine();
-                maskedWordString = TempString(maskedWord);
+                maskedWordString = TempString(MaskedWord);
             } while (Story.RandomWord != maskedWordString && isGameLoopOver == false);
             PlayingField();
             GameResult(isGameLoopOver);
         }
-        public static void ArrayInitiation()        //  Initierar alla fält.
+        public static void ArrayInitiation()    //  Initierar alla fält
         {
-            maskedWord = new string[Story.RandomWord.Length];
-            rightLetters = new string[Story.RandomWord.Length];
-            wrongLetters = new string[Player.PlayerLife];
             //  Initierar fälten och lägger in minustecken för varje bokstav i det dolda ordet.
             for (int hiddenLetter = 0; hiddenLetter < Story.RandomWord.Length; hiddenLetter++)
             {
-                maskedWord[hiddenLetter] = "-";
+                MaskedWord[hiddenLetter] = "-";
             }
             //  Initierar fälten för korrekta gissningar.
             for (int hiddenLetter = 0; hiddenLetter < Story.RandomWord.Length; hiddenLetter++)
             {
-                rightLetters[hiddenLetter] = " ";
+                RightLetters[hiddenLetter] = " ";
             }
             //  Initierar fälten för felaktiga gissningar.
             for (int hiddenLetter = 0; hiddenLetter < Player.PlayerLife; hiddenLetter++)
             {
-                wrongLetters[hiddenLetter] = " ";
+                WrongLetters[hiddenLetter] = " ";
             }
         }
-        public static string TempString(string[] tempStringArray)
+        public static string TempString(string[] tempStringArray)   //  Bygger en temporär sträng
         {
             string tempString = string.Empty;
 
@@ -74,19 +110,22 @@ namespace Hangman_1._0
         }
         public static void PlayingField()  //  Ritar upp spelplanen, frågar efter bokstav samt returnerar värde.
         {
+
             Console.Clear();
+            //Console.WriteLine("----------------------------------");
+            //Console.WriteLine("   Category: " + Story.Category);
             Console.WriteLine("----------------------------------");
             Console.Write("\n\tSecret word: ");
             for (int i = 0; i < Story.RandomWord.Length; i++)
             {
-                Console.Write(maskedWord[i]);
+                Console.Write(MaskedWord[i]);
             }
             Console.WriteLine("\n\n----------------------------------");
             Console.Write("\tUsed letters:\n     ");
 
-            for (int i = 0; i < playerGuesses; i++)
+            for (int i = 0; i < WrongLetters.Length; i++)
             {
-                Console.Write(wrongLetters[i] + " ");
+                Console.Write(WrongLetters[i] + " ");
             }
 
             Console.WriteLine("\n----------------------------------");
@@ -96,8 +135,8 @@ namespace Hangman_1._0
         }
         public static bool GameEngine()    //  Spelmotor.
         {
-            string input;
             string[] usedLetters = new string[Story.RandomWord.Length];
+            string input;
             bool isGameWon;
             bool isRightGuess;
             //  Har spelaren liv kvar?
@@ -117,7 +156,7 @@ namespace Hangman_1._0
                         //  Kollar om bokstaven finns och byter ut minustecken mot denna.
                         if (input[0] == Story.RandomWord[guessedLetter])
                         {
-                            maskedWord[guessedLetter] = input;
+                            MaskedWord[guessedLetter] = input;
                             isRightGuess = true;
                         }
                     }
@@ -125,9 +164,9 @@ namespace Hangman_1._0
                     if (!isRightGuess)
                     {
                         //  Kollar om den felaktiga gissningen använts tidigare.
-                        for (int guessedLetter = 0; guessedLetter < playerGuesses; guessedLetter++)
+                        for (int guessedLetter = 0; guessedLetter < WrongLetters.Length; guessedLetter++)
                         {
-                            if (input == wrongLetters[guessedLetter])
+                            if (input == WrongLetters[guessedLetter])
                             {
                                 //  Meddelar att gissningen använts tidigare.
                                 PlayingField();
@@ -141,9 +180,9 @@ namespace Hangman_1._0
                             PlayingField();
                             WrongGuess();
                             //  Lagrar gissningen i första fältet för felaktiga gissningar.
-                            wrongLetters[wrongGuesses] = input;
+                            WrongLetters[WrongGuesses] = input;
                             //  Byter till nästa fält för felaktiga gissningar.
-                            wrongGuesses++;
+                            WrongGuesses++;
                             //  Räknar ner ett liv.
                             Player.PlayerLife--;
                         }
@@ -155,7 +194,7 @@ namespace Hangman_1._0
                         //  Kollar om den korrekta gissningen har använts tidigare.
                         for (int guessedLetter = 0; guessedLetter < Story.RandomWord.Length; guessedLetter++)
                         {
-                            if (input == rightLetters[guessedLetter])
+                            if (input == RightLetters[guessedLetter])
                             {
                                 used = true;
                             }
@@ -166,9 +205,9 @@ namespace Hangman_1._0
                             PlayingField();
                             RightGuess();
                             //  Lagrar gissningen i första fältet för korrekta gissningar.
-                            rightLetters[rightGuesses] = input;
+                            RightLetters[RightGuesses] = input;
                             //  Byter till nästa fält för korrekta gissningar.
-                            rightGuesses++;
+                            RightGuesses++;
                         }
                         else
                         {
@@ -234,7 +273,7 @@ namespace Hangman_1._0
                 Console.WriteLine("\t    You won!");
                 // Display achieved score to the user as well as determine whether score is eligible for the highscore list 
                 Highscore.CalculateScore();
-                Console.WriteLine("You scored {0} points this game.", Highscore.Score);
+                Console.WriteLine(" You scored {0} points this game.", Highscore.Score);
                 Console.WriteLine("----------------------------------");
                 Console.WriteLine("\n     Press any key to continue\n");
                 Console.WriteLine("----------------------------------");
@@ -264,12 +303,14 @@ namespace Hangman_1._0
                     Console.WriteLine("\n     Press any key to continue\n");
                     Console.WriteLine("----------------------------------");
                     Console.ReadKey();
-                    isGameOver = true;
+                    IsGameOver = true;
                     break;
                 default:
                     Restart();
                     break;
             }
         }
+
+        #endregion
     }
 }

@@ -9,6 +9,8 @@ namespace Hangman_1._0
 {
     class Highscore
     {
+        #region Class Variables
+
         // Gathers data from each row from the txt file
         private static string[] highScores;
 
@@ -27,6 +29,20 @@ namespace Hangman_1._0
 
         private const int maxNumOfScores = 5;
 
+        #endregion
+
+        #region Properties
+
+        public static string[] HighScores
+        {
+            get { return highScores; }
+            set { highScores = value; }
+        }
+        public static string[] SplitHighScores
+        {
+            get { return splitHighScores; }
+            set { splitHighScores = value; }
+        }
         // Property pertaining to aforementioned points
         public static int Score
         {
@@ -34,29 +50,32 @@ namespace Hangman_1._0
             set { score = value; }
         }
 
+        #endregion
+
+        #region Highscore Methods
+
         // Method referenced in Game.cs
-        public static void CalculateScore()
+        public static void CalculateScore() //  Räknar ut poäng och anropar metod för jämförelse med highscorelistan
         {
             // Score output to the user
-            score = Player.PlayerLife * Story.DifficultyLevel;
+            score = (Player.PlayerLife * Story.RandomWord.Length * Game.RightGuesses * Story.DifficultyLevel) - Game.WrongGuesses;
             
             // Method that determines whether score is eligible for the highscore list
             PrintScore();
         }
-
-        public static void PrintScore()
+        public static void PrintScore() //  Läser in highscorelistan och delar upp i namn och poäng
         {
-            highScores = File.ReadAllLines(@"Highscore.txt");
-            highScoreNames = new string[highScores.Length];
-            highScorePoints = new int[highScores.Length];
-            tempNames = new string[highScores.Length];
-            tempPoints = new int[highScores.Length];
+            HighScores = File.ReadAllLines(@"Highscore.txt");
+            highScoreNames = new string[HighScores.Length];
+            highScorePoints = new int[HighScores.Length];
+            tempNames = new string[HighScores.Length];
+            tempPoints = new int[HighScores.Length];
 
-            for (int i = 0; i < highScores.Length; i++)
+            for (int i = 0; i < HighScores.Length; i++)
             {
-                splitHighScores = highScores[i].Split(' ');
-                highScoreNames[i] = splitHighScores[0];
-                highScorePoints[i] = Int32.Parse(splitHighScores[1]);
+                SplitHighScores = HighScores[i].Split(' ');
+                highScoreNames[i] = SplitHighScores[0];
+                highScorePoints[i] = Int32.Parse(SplitHighScores[1]);
                 tempNames[i] = highScoreNames[i];
                 tempPoints[i] = highScorePoints[i];
             }
@@ -64,10 +83,9 @@ namespace Hangman_1._0
             IsScoreEligibleForList();
             WriteData();
         }
-
-        private static void IsScoreEligibleForList()
+        private static void IsScoreEligibleForList()    //  Kollar om poängen räcker för highscore
         {
-            for (int i = 0; i < highScores.Length; i++)
+            for (int i = 0; i < HighScores.Length; i++)
             {
                 if (score >= highScorePoints[i])
                 {
@@ -76,7 +94,7 @@ namespace Hangman_1._0
                     highScoreNames[i] = Player.PlayerName;
 
                     // Populate each subsequent row with the row above
-                    for (int j = i; j < highScores.Length; j++)
+                    for (int j = i; j < HighScores.Length; j++)
                     {
                         // Making sure to discard the 6th element in the array
                         // 6th element created as a consequence of moving the individual rows 1 step down
@@ -90,15 +108,15 @@ namespace Hangman_1._0
                 }
             }
         }
-
-        private static void WriteData()
+        private static void WriteData() //  Skriver highscorelistan till fil
         {
             for (int i = 0; i < highScoreNames.Length; i++)
             {
-                highScores[i] = highScoreNames[i] + " " + highScorePoints[i];
+                HighScores[i] = highScoreNames[i] + " " + highScorePoints[i];
             }
-
-            File.WriteAllLines(@"Highscore.txt", highScores);
+            File.WriteAllLines(@"Highscore.txt", HighScores);
         }
+
+        #endregion
     }
 }

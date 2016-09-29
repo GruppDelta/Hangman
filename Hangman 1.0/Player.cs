@@ -8,26 +8,38 @@ namespace Hangman_1._0
 {
     class Player
     {
+        #region Class Variables
+
         private static string playerName;
         private static int playerLife;
 
-        public static int PlayerLife
-        {
-            get { return playerLife; }
-            set { playerLife = value;}
-        }
+        #endregion
+
+        #region Properties
 
         public static string PlayerName
         {
             get { return playerName; }
+
             set
             {
                 if (value.Length > 3 || value.Length < 10)
+                {
                     playerName = value;
+                }
             }
         }
-        public static void AskForName()
+        public static int PlayerLife
+        {
+            get { return playerLife; }
+            set { playerLife = value; }
+        }
 
+        #endregion
+
+        #region Player Methods
+
+        public static string PlayerInformation()
         {
             do
             {
@@ -35,6 +47,9 @@ namespace Hangman_1._0
                 Console.Write("  Enter your name: ");
                 PlayerName = Console.ReadLine();
             } while (PlayerName.Length < 3 || PlayerName.Length > 10);
+            return PlayerName;
         }
+
+        #endregion
     }
 }

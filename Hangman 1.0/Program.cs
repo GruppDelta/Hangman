@@ -11,17 +11,18 @@ namespace Hangman_1._0
     {
         //Startar en sidotråd för musiken. Så programmet inte stannar upp.
         static Thread backgroundMusic = new Thread(new ThreadStart(Beeper.MusicLoop));
-        
+
         static void Main(string[] args)
         {
+            Game.IsGameOver = false;
 
             GFX.WelcomeGFX();
-            Player.AskForName();
+            Player.PlayerInformation();
             //Startar musiken.
             backgroundMusic.Start();
             while (!Game.IsGameOver)
             {
-                Story.StoryLine(Player.PlayerName);
+                Story.MainMenu(Player.PlayerName);
                 Game.GameLoop();
                 Game.Restart();
             }
