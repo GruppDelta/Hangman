@@ -163,10 +163,10 @@ namespace Hangman_1._0
 @" ║                                 |++HH++|  _HHHH__|                                                                 ║" + Environment.NewLine +
 @" ║                                                                                                                    ║" + Environment.NewLine +
 @" ║               __                   ___   __                                                                        ║" + Environment.NewLine +
-@" ║              |**|  ___    _   __  |***| |**| ___   _            *KABLAAM*                                          ║" + Environment.NewLine +
+@" ║              |**|  ___    _   __  |***| |**| ___   _                                                               ║" + Environment.NewLine +
 @" ║              |**| |***|  |*| |**| |***| |**||***| |*|                                                              ║" + Environment.NewLine +
 @" ║              |**| |***|  |*| |**| |***| |**||***| |*|                                                              ║" + Environment.NewLine +
-@" ║              |**| |***|  |*| |**| |***| |**||***| |*||xx| |x%x|                                                    ║" + Environment.NewLine +
+@" ║              |**| |***|  |*| |**| |***| |**||***| |*|                                                              ║" + Environment.NewLine +
 @" ║                                                                                                                    ║" + Environment.NewLine;
                 case 7:
                     return @"" +
@@ -188,7 +188,7 @@ namespace Hangman_1._0
 @" ║              |**|  ___    _   __  |***| |**| ___                                                                   ║" + Environment.NewLine +
 @" ║              |**| |***|  |*| |**| |***| |**||***|                                                                  ║" + Environment.NewLine +
 @" ║              |**| |***|  |*| |**| |***| |**||***|                                                                  ║" + Environment.NewLine +
-@" ║              |**| |***|  |*| |**| |***| |**||***| |x||xx| |x%x|                                                    ║" + Environment.NewLine +
+@" ║              |**| |***|  |*| |**| |***| |**||***| |x|                                                              ║" + Environment.NewLine +
 @" ║                                                                                                                    ║" + Environment.NewLine;
                 case 6:
                     return @"" +
@@ -210,7 +210,7 @@ namespace Hangman_1._0
 @" ║              |**|  ___    _   __  |***| |**|                      *KNACK KNAK*                                     ║" + Environment.NewLine +
 @" ║              |**| |***|  |*| |**| |***| |**|                                                                       ║" + Environment.NewLine +
 @" ║              |**| |***|  |*| |**| |***| |**|                                                                       ║" + Environment.NewLine +
-@" ║              |**| |***|  |*| |**| |***| |**||x%x| |x||xx| |x%x|                                                    ║" + Environment.NewLine +
+@" ║              |**| |***|  |*| |**| |***| |**||x%x| |x|                                                              ║" + Environment.NewLine +
 @" ║                                                                                                                    ║" + Environment.NewLine;
                 case 5:
                     return @"" +
@@ -232,7 +232,7 @@ namespace Hangman_1._0
 @" ║              |**|  ___    _   __  |***|                           *POOF SMACK*                                     ║" + Environment.NewLine +
 @" ║              |**| |***|  |*| |**| |***|                                                                            ║" + Environment.NewLine +
 @" ║              |**| |***|  |*| |**| |***|                                                                            ║" + Environment.NewLine +
-@" ║              |**| |***|  |*| |**| |***| |xx||x%x| |x||xx| |x%x|                                                    ║" + Environment.NewLine +
+@" ║              |**| |***|  |*| |**| |***| |xx||x%x| |x|                                                              ║" + Environment.NewLine +
 @" ║                                                                                                                    ║" + Environment.NewLine;
                 case 4:
                     return @"" +
@@ -254,7 +254,7 @@ namespace Hangman_1._0
 @" ║              |**|  ___    _   __                                  *KLIRR BOOOM*                                    ║" + Environment.NewLine +
 @" ║              |**| |***|  |*| |**|                                                                                  ║" + Environment.NewLine +
 @" ║              |**| |***|  |*| |**|                                                                                  ║" + Environment.NewLine +
-@" ║              |**| |***|  |*| |**| |x%x |xx||x%x| |x||xx| |x%x|                                                     ║" + Environment.NewLine +
+@" ║              |**| |***|  |*| |**| |x%x |xx||x%x| |x|                                                               ║" + Environment.NewLine +
 @" ║                                                                                                                    ║" + Environment.NewLine;
                 case 3:
                     return @"" +
@@ -276,7 +276,7 @@ namespace Hangman_1._0
 @" ║              |**|  ___    _                                       *BAUTABANG*                                      ║" + Environment.NewLine +
 @" ║              |**| |***|  |*|                                                                                       ║" + Environment.NewLine +
 @" ║              |**| |***|  |*|                                                                                       ║" + Environment.NewLine +
-@" ║              |**| |***|  |*| |xx| |x%x |xx||x%x| |x||xx| |x%x|                                                     ║" + Environment.NewLine +
+@" ║              |**| |***|  |*| |xx| |x%x |xx||x%x| |x|                                                               ║" + Environment.NewLine +
 @" ║                                                                                                                    ║" + Environment.NewLine;
                 case 2:
                     return @"" +
@@ -298,7 +298,7 @@ namespace Hangman_1._0
 @" ║              |**|  ___                                            *CRASH BOOM*                                     ║" + Environment.NewLine +
 @" ║              |**| |***|                                                                                            ║" + Environment.NewLine +
 @" ║              |**| |***|                                                                                            ║" + Environment.NewLine +
-@" ║              |**| |***|  |x| |xx| |x%x |xx||x%x| |x||xx| |x%x|                                                     ║" + Environment.NewLine +
+@" ║              |**| |***|  |x| |xx| |x%x |xx||x%x| |x|                                                               ║" + Environment.NewLine +
 @" ║                                                                                                                    ║" + Environment.NewLine;
                 case 1:
                     return @"" +
@@ -320,7 +320,7 @@ namespace Hangman_1._0
 @" ║              |**|                                                 *CRASH BOOM*                                     ║" + Environment.NewLine +
 @" ║              |**|                                                                                                  ║" + Environment.NewLine +
 @" ║              |**|                                                                                                  ║" + Environment.NewLine +
-@" ║              |**| |x%x|  |*| |xx| |x%x |xx||x%x| |x||xx| |x%x|                                                     ║" + Environment.NewLine +
+@" ║              |**| |x%x|  |*| |xx| |x%x |xx||x%x| |x|                                                               ║" + Environment.NewLine +
 @" ║                                                                                                                    ║" + Environment.NewLine;
                 case 0:
                     return @"" +
@@ -342,7 +342,7 @@ namespace Hangman_1._0
 @" ║            *BAUTA CRASH BADABOOM KAKLIRR KNARR SLAP KNOCK SWOSH TSONG BOOOOOM*                                     ║" + Environment.NewLine +
 @" ║            The bad guys won today. Let us hope that your replacement won't be so ... disappointing.                ║" + Environment.NewLine +
 @" ║                                                                                                                    ║" + Environment.NewLine +
-@" ║              |**| |x%x|  |*| |xx| |x%x |xx||x%x| |x||xx| |x%x|                                                     ║" + Environment.NewLine +
+@" ║              |**| |x%x|  |*| |xx| |x%x |xx||x%x| |x|                                                               ║" + Environment.NewLine +
 @" ║                                                                                                                    ║" + Environment.NewLine;
 
                 default: return @"" +

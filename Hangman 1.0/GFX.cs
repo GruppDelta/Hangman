@@ -10,10 +10,38 @@ namespace Hangman_1._0
     {
         #region Class Variables
 
-        public static string currentTopBox = "";
-        public static string currentMiddleBox = "";
-        //public static string currentRightBox = "";
-        public static string currentBottomBox = "";
+        public static string currentTopBox = "" +
+" ╔════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗" + Environment.NewLine +
+" ║                                                                                                                    ║" + Environment.NewLine +
+" ║                                                                                                                    ║" + Environment.NewLine +
+" ║                                                                                                                    ║" + Environment.NewLine +
+" ║                                                                                                                    ║" + Environment.NewLine +
+" ║                                                                                                                    ║" + Environment.NewLine +
+" ║                                                                                                                    ║" + Environment.NewLine +
+" ║                                                                                                                    ║" + Environment.NewLine +
+" ║                                                                                                                    ║" + Environment.NewLine +
+" ║                                                                                                                    ║" + Environment.NewLine +
+" ║                                                                                                                    ║" + Environment.NewLine +
+" ║                                                                                                                    ║" + Environment.NewLine +
+" ║                                                                                                                    ║" + Environment.NewLine +
+" ║                                                                                                                    ║" + Environment.NewLine +
+" ║                                                                                                                    ║" + Environment.NewLine +
+" ║                                                                                                                    ║" + Environment.NewLine +
+" ║                                                                                                                    ║" + Environment.NewLine +
+" ║                                                                                                                    ║" + Environment.NewLine +
+" ║                                                                                                                    ║" + Environment.NewLine +
+" ║                                                                                                                    ║" + Environment.NewLine;
+        public static string currentMiddleBox = "" +
+" ╠═════════════════════════════════════════════════════════╦══════════════════════════════════════════════════════════╣" + Environment.NewLine +
+" ║                                                         ║                                                          ║" + Environment.NewLine +
+" ║                                                         ║                                                          ║" + Environment.NewLine +
+" ║                                                         ║                                                          ║" + Environment.NewLine;
+        public static string currentBottomBox = "" +
+" ╠═════════════════════════════════════════════════════════╩══════════════════════════════════════════════════════════╣" + Environment.NewLine +
+" ║                                                                                                                    ║" + Environment.NewLine +
+" ║                                                                                                                    ║" + Environment.NewLine +
+" ║                                                                                                                    ║" + Environment.NewLine +
+" ╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝";
 
         public enum BoxPos : int { TopBoxLeft = 0, TopBoxTop = 0, MiddleBoxLeft = 0, MiddleBoxTop = 20, BottomBoxLeft = 0, BottomBoxTop = 24, BottomBoxWritingLeft = 26, BottomBoxWritingTop = 26 };
 

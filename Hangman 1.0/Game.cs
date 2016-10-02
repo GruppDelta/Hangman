@@ -12,6 +12,9 @@ namespace Hangman_1._0
 
         private const bool isUsingExperimentalGraphics = false;
 
+        private static bool hasStoryInfoBeenShown = false;
+        private static string experimentalStringToTellUserOnNextIteration = "  ";
+
         private static bool isGameOver;
         private static int rightGuesses;
         private static int wrongGuesses;
@@ -126,6 +129,27 @@ namespace Hangman_1._0
                 tempGuessedString += s;
             }
 
+            if (!hasStoryInfoBeenShown)
+            {
+                switch (Story.DifficultyLevel)
+                {
+                    case 1:
+                        GFX.UpdateTopBoxOfScreen(GFX.FormatTopBox(Story.EasyGraphics(1000)));
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        break;
+
+                }
+
+                GFX.DrawAllPartsOfScreen();
+
+                hasStoryInfoBeenShown = true;
+                Console.ReadKey();
+            }
+
+
             switch (Story.DifficultyLevel)
             {
                 case 1:
@@ -178,7 +202,7 @@ namespace Hangman_1._0
             {
                 {
                     //  Ritar upp spelplan och frågar efter bokstav. 
-                    string experimentalStringToTellUserOnNextIteration = "  ";
+                    
                     do
                     {
                         if (isUsingExperimentalGraphics)
