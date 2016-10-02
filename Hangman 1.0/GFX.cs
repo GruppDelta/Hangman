@@ -15,7 +15,7 @@ namespace Hangman_1._0
         //public static string currentRightBox = "";
         public static string currentBottomBox = "";
 
-        enum BoxPos : int { TopBoxLeft = 0, TopBoxTop = 0, MiddleBoxLeft = 0, MiddleBoxTop = 20, BottomBoxLeft = 0, BottomBoxTop = 24 };
+        public enum BoxPos : int { TopBoxLeft = 0, TopBoxTop = 0, MiddleBoxLeft = 0, MiddleBoxTop = 20, BottomBoxLeft = 0, BottomBoxTop = 24, BottomBoxWritingLeft = 26, BottomBoxWritingTop = 26 };
 
         #endregion
 
@@ -205,43 +205,6 @@ namespace Hangman_1._0
 
         #endregion
 
-        #region Actual Graphics - Generic
-
-        public static string JustDrawBasicTopBox(bool inputAnswerCorrect) //Redundant at the moment. Included for completeness.
-        {
-            Console.SetCursorPosition((int)BoxPos.TopBoxLeft, (int)BoxPos.TopBoxTop);
-
-            string tempSpaceLine = "                                                                                                                    ";
-
-            string tempTopBoxString = FormatSpacesWithCenteredWord(tempSpaceLine, Player.PlayerLife.ToString());
-
-            string tempString = "" +
-" ╔════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗\n" +
-" ║                                                                                                                    ║\n" +
-" ║                                                                                                                    ║\n" +
-" ║                                                                                                                    ║\n" +
-" ║                                                                                                                    ║\n" +
-" ║                                                                                                                    ║\n" +
-" ║                                                                                                                    ║\n" +
-" ║                                                                                                                    ║\n" +
-" ║                                                                                                                    ║\n" +
-" ║                                                                                                                    ║\n" +
-" ║                                                                                                                    ║\n" +
-" ║                                                                                                                    ║\n" +
-" ║                                                                                                                    ║\n" +
-" ║                                                                                                                    ║\n" +
-" ║                                                                                                                    ║\n" +
-" ║                                                                                                                    ║\n" +
-" ║                                                                                                                    ║\n" +
-" ║                                                                                                                    ║\n" +
-" ║                                                                                                                    ║\n" +
-" ║                                                                                                                    ║\n";
-
-            return tempString;
-        }
-
-        #endregion
-
         #region Drawing Methods
 
         public static void DrawFullScreen(string inputString)
@@ -253,7 +216,7 @@ namespace Hangman_1._0
         public static void DrawTestScreen()
         {
             Console.Clear();
-            Console.Write(FormatTopBox("Pelle Nisse"));
+            Console.Write(FormatTopBox(Story.EasyGraphics(10)));
             Console.Write(FormatMiddleBox("N_TION_LENCYKLOPEDIN", "ASDFASDF"));
             Console.Write(FormatBottomBox(""));
         }
@@ -268,6 +231,12 @@ namespace Hangman_1._0
         public static string FormatTopBox(string inputTopBox) //Redundant at the moment. Included for completeness.
         {
             Console.SetCursorPosition((int)BoxPos.TopBoxLeft, (int)BoxPos.TopBoxTop);
+
+            if (inputTopBox != "")
+            {
+                currentTopBox = inputTopBox;
+                return inputTopBox;
+            }
 
             string tempSpaceLine = "                                                                                                                    ";
 
@@ -295,6 +264,8 @@ namespace Hangman_1._0
 " ║                                                                                                                    ║\n" +
 " ║                                                                                                                    ║\n";
 
+            currentTopBox = tempString;
+
             return tempString;
         }
 
@@ -313,8 +284,9 @@ namespace Hangman_1._0
 " ╠═════════════════════════════════════════════════════════╦══════════════════════════════════════════════════════════╣\n" +
 " ║                                                         ║                                                          ║\n" +
 " ║" + leftBoxTempString + "║" + rightBoxTempString + "║\n" +
-" ║                                                         ║                                                          ║";
+" ║                                                         ║                                                          ║\n";
 
+            currentMiddleBox = tempString;
             return tempString;
         }
 
@@ -322,13 +294,20 @@ namespace Hangman_1._0
         {
             Console.SetCursorPosition((int)BoxPos.BottomBoxLeft, (int)BoxPos.BottomBoxTop);
 
-            string tempString =
-@" ╠═════════════════════════════════════════════════════════╩══════════════════════════════════════════════════════════╣
- ║                                                                                                                    ║
- ║                                                                                                                    ║
- ║                                                                                                                    ║
- ╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
-";
+            string spaceString = "                                                                                                                    ";
+
+            string noteToUserString = FormatSpacesWithCenteredWord(spaceString, inputBottomBox);
+
+            string tempString = "" +
+" ╠═════════════════════════════════════════════════════════╩══════════════════════════════════════════════════════════╣" + Environment.NewLine +
+" ║" + noteToUserString +"║" + Environment.NewLine +
+" ║        Guess a letter:                                                                                             ║" + Environment.NewLine +
+" ║                                                                                                                    ║" + Environment.NewLine +
+" ╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝";
+            currentBottomBox = tempString;
+
+            Console.SetCursorPosition((int)BoxPos.BottomBoxLeft, (int)BoxPos.BottomBoxTop);
+
             return tempString;
         }
 

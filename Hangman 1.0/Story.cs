@@ -139,5 +139,270 @@ namespace Hangman_1._0
         }
 
         #endregion
+
+        #region Story Graphics
+
+        public static string EasyGraphics(int playerLives)
+        {
+            switch (playerLives)
+            {
+                case 8:
+                    return @"" +
+@" ╔════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗" + Environment.NewLine +
+@" ║                                                                                                                    ║" + Environment.NewLine +
+@" ║    __   __                     ___                ^                         __   __                     ___        ║" + Environment.NewLine +
+@" ║   |  | |  |      /|           |   |  _______     ^^^                       |  | |  |      /|           |   |       ║" + Environment.NewLine +
+@" ║   |  | |  |  _  | |__         |   |_|xxxxxxx|  _^^^^^_      _              |  | |  |  _  | |__         |   |       ║" + Environment.NewLine +
+@" ║   |  | |  |_| | | |  |/\_     |   | |xxxxxxx| | [][]  |   _/ \_          __|  | |  |_| | | |  |/\_     |   |       ║" + Environment.NewLine +
+@" ║   |  | |  |  | | __| |  |   |_   ______xxxxx| |[][][] |_-/     \-_     _|  |  | |  | | __| |  |   |_   |   |       ║" + Environment.NewLine +
+@" ║   |  | | ^|  | ||  | |  |   | |_|++++++|xxxx| | [][][]|  \     /  |___| |  |  |^|  | ||  | |  |   | |__|   |       ║" + Environment.NewLine +
+@" ║   |  | | ||  | ||  | |  |   | |_|++++++|xxxx| |[][][] |   |___|   |   | |  |  |||  | ||  | |  |   | /\ |   |       ║" + Environment.NewLine +
+@" ║   ~~~~~~~~~~~~~~~~~~~~~~~~~~|___|++++++|_________ [][]|   |   |   |   | |  =================================       ║" + Environment.NewLine +
+@" ║                                 |++++++|=|=|=|=|=| [] |   |   |   |   | |_/                                        ║" + Environment.NewLine +
+@" ║                                 |++++++|=|=|=|=|=|[][]|                                                            ║" + Environment.NewLine +
+@" ║                                 |++HH++|  _HHHH__|                                                                 ║" + Environment.NewLine +
+@" ║                                                                                                                    ║" + Environment.NewLine +
+@" ║               __                   ___   __                                                                        ║" + Environment.NewLine +
+@" ║              |**|  ___    _   __  |***| |**| ___   _            *KABLAAM*                                          ║" + Environment.NewLine +
+@" ║              |**| |***|  |*| |**| |***| |**||***| |*|                                                              ║" + Environment.NewLine +
+@" ║              |**| |***|  |*| |**| |***| |**||***| |*|                                                              ║" + Environment.NewLine +
+@" ║              |**| |***|  |*| |**| |***| |**||***| |*||xx| |x%x|                                                    ║" + Environment.NewLine +
+@" ║                                                                                                                    ║" + Environment.NewLine;
+                case 7:
+                    return @"" +
+@" ╔════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗" + Environment.NewLine +
+@" ║                                                                                                                    ║" + Environment.NewLine +
+@" ║    __   __                     ___                ^                         __   __                     ___        ║" + Environment.NewLine +
+@" ║   |  | |  |      /|           |   |  _______     ^^^                       |  | |  |      /|           |   |       ║" + Environment.NewLine +
+@" ║   |  | |  |  _  | |__         |   |_|xxxxxxx|  _^^^^^_      _              |  | |  |  _  | |__         |   |       ║" + Environment.NewLine +
+@" ║   |  | |  |_| | | |  |/\_     |   | |xxxxxxx| | [][]  |   _/ \_          __|  | |  |_| | | |  |/\_     |   |       ║" + Environment.NewLine +
+@" ║   |  | |  |  | | __| |  |   |_   ______xxxxx| |[][][] |_-/     \-_     _|  |  | |  | | __| |  |   |_   |   |       ║" + Environment.NewLine +
+@" ║   |  | | ^|  | ||  | |  |   | |_|++++++|xxxx| | [][][]|  \     /  |___| |  |  |^|  | ||  | |  |   | |__|   |       ║" + Environment.NewLine +
+@" ║   |  | | ||  | ||  | |  |   | |_|++++++|xxxx| |[][][] |   |___|   |   | |  |  |||  | ||  | |  |   | /\ |   |       ║" + Environment.NewLine +
+@" ║   ~~~~~~~~~~~~~~~~~~~~~~~~~~|___|++++++|_________ [][]|   |   |   |   | |  =================================       ║" + Environment.NewLine +
+@" ║                                 |++++++|=|=|=|=|=| [] |   |   |   |   | |_/                                        ║" + Environment.NewLine +
+@" ║                                 |++++++|=|=|=|=|=|[][]|                                                            ║" + Environment.NewLine +
+@" ║                                 |++HH++|  _HHHH__|                                                                 ║" + Environment.NewLine +
+@" ║                                                                                                                    ║" + Environment.NewLine +
+@" ║               __                   ___   __                    *EXPLOSIONS!*                                       ║" + Environment.NewLine +
+@" ║              |**|  ___    _   __  |***| |**| ___                                                                   ║" + Environment.NewLine +
+@" ║              |**| |***|  |*| |**| |***| |**||***|                                                                  ║" + Environment.NewLine +
+@" ║              |**| |***|  |*| |**| |***| |**||***|                                                                  ║" + Environment.NewLine +
+@" ║              |**| |***|  |*| |**| |***| |**||***| |x||xx| |x%x|                                                    ║" + Environment.NewLine +
+@" ║                                                                                                                    ║" + Environment.NewLine;
+                case 6:
+                    return @"" +
+@" ╔════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗" + Environment.NewLine +
+@" ║                                                                                                                    ║" + Environment.NewLine +
+@" ║    __   __                     ___                ^                         __   __                     ___        ║" + Environment.NewLine +
+@" ║   |  | |  |      /|           |   |  _______     ^^^                       |  | |  |      /|           |   |       ║" + Environment.NewLine +
+@" ║   |  | |  |  _  | |__         |   |_|xxxxxxx|  _^^^^^_      _              |  | |  |  _  | |__         |   |       ║" + Environment.NewLine +
+@" ║   |  | |  |_| | | |  |/\_     |   | |xxxxxxx| | [][]  |   _/ \_          __|  | |  |_| | | |  |/\_     |   |       ║" + Environment.NewLine +
+@" ║   |  | |  |  | | __| |  |   |_   ______xxxxx| |[][][] |_-/     \-_     _|  |  | |  | | __| |  |   |_   |   |       ║" + Environment.NewLine +
+@" ║   |  | | ^|  | ||  | |  |   | |_|++++++|xxxx| | [][][]|  \     /  |___| |  |  |^|  | ||  | |  |   | |__|   |       ║" + Environment.NewLine +
+@" ║   |  | | ||  | ||  | |  |   | |_|++++++|xxxx| |[][][] |   |___|   |   | |  |  |||  | ||  | |  |   | /\ |   |       ║" + Environment.NewLine +
+@" ║   ~~~~~~~~~~~~~~~~~~~~~~~~~~|___|++++++|_________ [][]|   |   |   |   | |  =================================       ║" + Environment.NewLine +
+@" ║                                 |++++++|=|=|=|=|=| [] |   |   |   |   | |_/                                        ║" + Environment.NewLine +
+@" ║                                 |++++++|=|=|=|=|=|[][]|                                                            ║" + Environment.NewLine +
+@" ║                                 |++HH++|  _HHHH__|                                                                 ║" + Environment.NewLine +
+@" ║                                                                                                                    ║" + Environment.NewLine +
+@" ║               __                   ___   __                                                                        ║" + Environment.NewLine +
+@" ║              |**|  ___    _   __  |***| |**|                      *KNACK KNAK*                                     ║" + Environment.NewLine +
+@" ║              |**| |***|  |*| |**| |***| |**|                                                                       ║" + Environment.NewLine +
+@" ║              |**| |***|  |*| |**| |***| |**|                                                                       ║" + Environment.NewLine +
+@" ║              |**| |***|  |*| |**| |***| |**||x%x| |x||xx| |x%x|                                                    ║" + Environment.NewLine +
+@" ║                                                                                                                    ║" + Environment.NewLine;
+                case 5:
+                    return @"" +
+@" ╔════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗" + Environment.NewLine +
+@" ║                                                                                                                    ║" + Environment.NewLine +
+@" ║    __   __                     ___                ^                         __   __                     ___        ║" + Environment.NewLine +
+@" ║   |  | |  |      /|           |   |  _______     ^^^                       |  | |  |      /|           |   |       ║" + Environment.NewLine +
+@" ║   |  | |  |  _  | |__         |   |_|xxxxxxx|  _^^^^^_      _              |  | |  |  _  | |__         |   |       ║" + Environment.NewLine +
+@" ║   |  | |  |_| | | |  |/\_     |   | |xxxxxxx| | [][]  |   _/ \_          __|  | |  |_| | | |  |/\_     |   |       ║" + Environment.NewLine +
+@" ║   |  | |  |  | | __| |  |   |_   ______xxxxx| |[][][] |_-/     \-_     _|  |  | |  | | __| |  |   |_   |   |       ║" + Environment.NewLine +
+@" ║   |  | | ^|  | ||  | |  |   | |_|++++++|xxxx| | [][][]|  \     /  |___| |  |  |^|  | ||  | |  |   | |__|   |       ║" + Environment.NewLine +
+@" ║   |  | | ||  | ||  | |  |   | |_|++++++|xxxx| |[][][] |   |___|   |   | |  |  |||  | ||  | |  |   | /\ |   |       ║" + Environment.NewLine +
+@" ║   ~~~~~~~~~~~~~~~~~~~~~~~~~~|___|++++++|_________ [][]|   |   |   |   | |  =================================       ║" + Environment.NewLine +
+@" ║                                 |++++++|=|=|=|=|=| [] |   |   |   |   | |_/                                        ║" + Environment.NewLine +
+@" ║                                 |++++++|=|=|=|=|=|[][]|                                                            ║" + Environment.NewLine +
+@" ║                                 |++HH++|  _HHHH__|                                                                 ║" + Environment.NewLine +
+@" ║                                                                                                                    ║" + Environment.NewLine +
+@" ║               __                   ___                                                                             ║" + Environment.NewLine +
+@" ║              |**|  ___    _   __  |***|                           *POOF SMACK*                                     ║" + Environment.NewLine +
+@" ║              |**| |***|  |*| |**| |***|                                                                            ║" + Environment.NewLine +
+@" ║              |**| |***|  |*| |**| |***|                                                                            ║" + Environment.NewLine +
+@" ║              |**| |***|  |*| |**| |***| |xx||x%x| |x||xx| |x%x|                                                    ║" + Environment.NewLine +
+@" ║                                                                                                                    ║" + Environment.NewLine;
+                case 4:
+                    return @"" +
+@" ╔════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗" + Environment.NewLine +
+@" ║                                                                                                                    ║" + Environment.NewLine +
+@" ║    __   __                     ___                ^                         __   __                     ___        ║" + Environment.NewLine +
+@" ║   |  | |  |      /|           |   |  _______     ^^^                       |  | |  |      /|           |   |       ║" + Environment.NewLine +
+@" ║   |  | |  |  _  | |__         |   |_|xxxxxxx|  _^^^^^_      _              |  | |  |  _  | |__         |   |       ║" + Environment.NewLine +
+@" ║   |  | |  |_| | | |  |/\_     |   | |xxxxxxx| | [][]  |   _/ \_          __|  | |  |_| | | |  |/\_     |   |       ║" + Environment.NewLine +
+@" ║   |  | |  |  | | __| |  |   |_   ______xxxxx| |[][][] |_-/     \-_     _|  |  | |  | | __| |  |   |_   |   |       ║" + Environment.NewLine +
+@" ║   |  | | ^|  | ||  | |  |   | |_|++++++|xxxx| | [][][]|  \     /  |___| |  |  |^|  | ||  | |  |   | |__|   |       ║" + Environment.NewLine +
+@" ║   |  | | ||  | ||  | |  |   | |_|++++++|xxxx| |[][][] |   |___|   |   | |  |  |||  | ||  | |  |   | /\ |   |       ║" + Environment.NewLine +
+@" ║   ~~~~~~~~~~~~~~~~~~~~~~~~~~|___|++++++|_________ [][]|   |   |   |   | |  =================================       ║" + Environment.NewLine +
+@" ║                                 |++++++|=|=|=|=|=| [] |   |   |   |   | |_/                                        ║" + Environment.NewLine +
+@" ║                                 |++++++|=|=|=|=|=|[][]|                                                            ║" + Environment.NewLine +
+@" ║                                 |++HH++|  _HHHH__|                                                                 ║" + Environment.NewLine +
+@" ║                                                                                                                    ║" + Environment.NewLine +
+@" ║               __                                                                                                   ║" + Environment.NewLine +
+@" ║              |**|  ___    _   __                                  *KLIRR BOOOM*                                    ║" + Environment.NewLine +
+@" ║              |**| |***|  |*| |**|                                                                                  ║" + Environment.NewLine +
+@" ║              |**| |***|  |*| |**|                                                                                  ║" + Environment.NewLine +
+@" ║              |**| |***|  |*| |**| |x%x |xx||x%x| |x||xx| |x%x|                                                     ║" + Environment.NewLine +
+@" ║                                                                                                                    ║" + Environment.NewLine;
+                case 3:
+                    return @"" +
+@" ╔════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗" + Environment.NewLine +
+@" ║                                                                                                                    ║" + Environment.NewLine +
+@" ║    __   __                     ___                ^                         __   __                     ___        ║" + Environment.NewLine +
+@" ║   |  | |  |      /|           |   |  _______     ^^^                       |  | |  |      /|           |   |       ║" + Environment.NewLine +
+@" ║   |  | |  |  _  | |__         |   |_|xxxxxxx|  _^^^^^_      _              |  | |  |  _  | |__         |   |       ║" + Environment.NewLine +
+@" ║   |  | |  |_| | | |  |/\_     |   | |xxxxxxx| | [][]  |   _/ \_          __|  | |  |_| | | |  |/\_     |   |       ║" + Environment.NewLine +
+@" ║   |  | |  |  | | __| |  |   |_   ______xxxxx| |[][][] |_-/     \-_     _|  |  | |  | | __| |  |   |_   |   |       ║" + Environment.NewLine +
+@" ║   |  | | ^|  | ||  | |  |   | |_|++++++|xxxx| | [][][]|  \     /  |___| |  |  |^|  | ||  | |  |   | |__|   |       ║" + Environment.NewLine +
+@" ║   |  | | ||  | ||  | |  |   | |_|++++++|xxxx| |[][][] |   |___|   |   | |  |  |||  | ||  | |  |   | /\ |   |       ║" + Environment.NewLine +
+@" ║   ~~~~~~~~~~~~~~~~~~~~~~~~~~|___|++++++|_________ [][]|   |   |   |   | |  =================================       ║" + Environment.NewLine +
+@" ║                                 |++++++|=|=|=|=|=| [] |   |   |   |   | |_/                                        ║" + Environment.NewLine +
+@" ║                                 |++++++|=|=|=|=|=|[][]|                                                            ║" + Environment.NewLine +
+@" ║                                 |++HH++|  _HHHH__|                                                                 ║" + Environment.NewLine +
+@" ║                                                                                                                    ║" + Environment.NewLine +
+@" ║               __                                                                                                   ║" + Environment.NewLine +
+@" ║              |**|  ___    _                                       *BAUTABANG*                                      ║" + Environment.NewLine +
+@" ║              |**| |***|  |*|                                                                                       ║" + Environment.NewLine +
+@" ║              |**| |***|  |*|                                                                                       ║" + Environment.NewLine +
+@" ║              |**| |***|  |*| |xx| |x%x |xx||x%x| |x||xx| |x%x|                                                     ║" + Environment.NewLine +
+@" ║                                                                                                                    ║" + Environment.NewLine;
+                case 2:
+                    return @"" +
+@" ╔════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗" + Environment.NewLine +
+@" ║                                                                                                                    ║" + Environment.NewLine +
+@" ║    __   __                     ___                ^                         __   __                     ___        ║" + Environment.NewLine +
+@" ║   |  | |  |      /|           |   |  _______     ^^^                       |  | |  |      /|           |   |       ║" + Environment.NewLine +
+@" ║   |  | |  |  _  | |__         |   |_|xxxxxxx|  _^^^^^_      _              |  | |  |  _  | |__         |   |       ║" + Environment.NewLine +
+@" ║   |  | |  |_| | | |  |/\_     |   | |xxxxxxx| | [][]  |   _/ \_          __|  | |  |_| | | |  |/\_     |   |       ║" + Environment.NewLine +
+@" ║   |  | |  |  | | __| |  |   |_   ______xxxxx| |[][][] |_-/     \-_     _|  |  | |  | | __| |  |   |_   |   |       ║" + Environment.NewLine +
+@" ║   |  | | ^|  | ||  | |  |   | |_|++++++|xxxx| | [][][]|  \     /  |___| |  |  |^|  | ||  | |  |   | |__|   |       ║" + Environment.NewLine +
+@" ║   |  | | ||  | ||  | |  |   | |_|++++++|xxxx| |[][][] |   |___|   |   | |  |  |||  | ||  | |  |   | /\ |   |       ║" + Environment.NewLine +
+@" ║   ~~~~~~~~~~~~~~~~~~~~~~~~~~|___|++++++|_________ [][]|   |   |   |   | |  =================================       ║" + Environment.NewLine +
+@" ║                                 |++++++|=|=|=|=|=| [] |   |   |   |   | |_/                                        ║" + Environment.NewLine +
+@" ║                                 |++++++|=|=|=|=|=|[][]|                                                            ║" + Environment.NewLine +
+@" ║                                 |++HH++|  _HHHH__|                                                                 ║" + Environment.NewLine +
+@" ║                                                                                                                    ║" + Environment.NewLine +
+@" ║               __                                                                                                   ║" + Environment.NewLine +
+@" ║              |**|  ___                                            *CRASH BOOM*                                     ║" + Environment.NewLine +
+@" ║              |**| |***|                                                                                            ║" + Environment.NewLine +
+@" ║              |**| |***|                                                                                            ║" + Environment.NewLine +
+@" ║              |**| |***|  |x| |xx| |x%x |xx||x%x| |x||xx| |x%x|                                                     ║" + Environment.NewLine +
+@" ║                                                                                                                    ║" + Environment.NewLine;
+                case 1:
+                    return @"" +
+@" ╔════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗" + Environment.NewLine +
+@" ║                                                                                                                    ║" + Environment.NewLine +
+@" ║    __   __                     ___                ^                         __   __                     ___        ║" + Environment.NewLine +
+@" ║   |  | |  |      /|           |   |  _______     ^^^                       |  | |  |      /|           |   |       ║" + Environment.NewLine +
+@" ║   |  | |  |  _  | |__         |   |_|xxxxxxx|  _^^^^^_      _              |  | |  |  _  | |__         |   |       ║" + Environment.NewLine +
+@" ║   |  | |  |_| | | |  |/\_     |   | |xxxxxxx| | [][]  |   _/ \_          __|  | |  |_| | | |  |/\_     |   |       ║" + Environment.NewLine +
+@" ║   |  | |  |  | | __| |  |   |_   ______xxxxx| |[][][] |_-/     \-_     _|  |  | |  | | __| |  |   |_   |   |       ║" + Environment.NewLine +
+@" ║   |  | | ^|  | ||  | |  |   | |_|++++++|xxxx| | [][][]|  \     /  |___| |  |  |^|  | ||  | |  |   | |__|   |       ║" + Environment.NewLine +
+@" ║   |  | | ||  | ||  | |  |   | |_|++++++|xxxx| |[][][] |   |___|   |   | |  |  |||  | ||  | |  |   | /\ |   |       ║" + Environment.NewLine +
+@" ║   ~~~~~~~~~~~~~~~~~~~~~~~~~~|___|++++++|_________ [][]|   |   |   |   | |  =================================       ║" + Environment.NewLine +
+@" ║                                 |++++++|=|=|=|=|=| [] |   |   |   |   | |_/                                        ║" + Environment.NewLine +
+@" ║                                 |++++++|=|=|=|=|=|[][]|                                                            ║" + Environment.NewLine +
+@" ║                                 |++HH++|  _HHHH__|                                                                 ║" + Environment.NewLine +
+@" ║                                                                                                                    ║" + Environment.NewLine +
+@" ║               __                                                                                                   ║" + Environment.NewLine +
+@" ║              |**|                                                 *CRASH BOOM*                                     ║" + Environment.NewLine +
+@" ║              |**|                                                                                                  ║" + Environment.NewLine +
+@" ║              |**|                                                                                                  ║" + Environment.NewLine +
+@" ║              |**| |x%x|  |*| |xx| |x%x |xx||x%x| |x||xx| |x%x|                                                     ║" + Environment.NewLine +
+@" ║                                                                                                                    ║" + Environment.NewLine;
+                case 0:
+                    return @"" +
+@" ╔════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗" + Environment.NewLine +
+@" ║                                                                                                                    ║" + Environment.NewLine +
+@" ║       __                         ___                                         __   _                                ║" + Environment.NewLine +
+@" ║      |    |     /|            |   |  _______     ^^^                       |  | | |   /                            ║" + Environment.NewLine +
+@" ║     |    |  _  | __          |    |_|xxxxx|  _^^^^_       _              |   |     |  _   ||__                     ║" + Environment.NewLine +
+@" ║      | _  | | |/_       |     | |xxxxxx| |[]]         |  _/_           __ |  | |  |_| | |    |/\_                  ║" + Environment.NewLine +
+@" ║     | |      __| |    |_   ____xx| |[[] ] |_/     \- _     _|             |   | |  | |__  |  |   |_    |   |       ║" + Environment.NewLine +
+@" ║   |  | | ^|  | ||   | |  |    |||++++|xxx x| |[]][]|   \     /  |___|  |  |   |^| | ||  | |   |   | |__|   |       ║" + Environment.NewLine +
+@" ║   |  | | ||  | ||  | |  |    |||++++xx   | |[[] [ ]  |   |___|   |   | |   |  |||  | ||  | |  |   | /\ |   |       ║" + Environment.NewLine +
+@" ║   ~~~~~~~~~~~~~~~~~~~~~~~~~~ |___|++|_____ ____ [][]|   |   |   |   | |    =================================       ║" + Environment.NewLine +
+@" ║                                  |+++++|=|=|=|=|=| [] |   |   |   |   | |_/                                        ║" + Environment.NewLine +
+@" ║                                       |++++++|=|=|[][]|                                                            ║" + Environment.NewLine +
+@" ║                                 |++HH++|  _HHHH__|                                                                 ║" + Environment.NewLine +
+@" ║                                                                                                                    ║" + Environment.NewLine +
+@" ║                                                                                                                    ║" + Environment.NewLine +
+@" ║            *BAUTA CRASH BADABOOM KAKLIRR KNARR SLAP KNOCK SWOSH TSONG BOOOOOM*                                     ║" + Environment.NewLine +
+@" ║            The bad guys won today. Let us hope that your replacement won't be so ... disappointing.                ║" + Environment.NewLine +
+@" ║                                                                                                                    ║" + Environment.NewLine +
+@" ║              |**| |x%x|  |*| |xx| |x%x |xx||x%x| |x||xx| |x%x|                                                     ║" + Environment.NewLine +
+@" ║                                                                                                                    ║" + Environment.NewLine;
+
+                default: return @"" +
+@" ╔════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗" + Environment.NewLine +
+@" ║                                                                                             ________               ║" + Environment.NewLine +
+@" ║                                                                                            /        \              ║" + Environment.NewLine +
+@" ║            _____________________________________________________________________        __/       (o)\__           ║" + Environment.NewLine +
+@" ║           |                                                                     \      /     ______\\   \          ║" + Environment.NewLine +
+@" ║           |  Greeting commander. You have been chosen for your superior          \     |____/__  __\____|          ║" + Environment.NewLine +
+@" ║           |  intellect to handle a delicate terrorist situation. The              >       [  --~~--  ]             ║" + Environment.NewLine +
+@" ║           |  terrorists threaten to destroy an entire city unless                /         |(  L   )|              ║" + Environment.NewLine +
+@" ║           |  we decipher their codeword. To make matters worse, they            /    ___----\  __  /----___        ║" + Environment.NewLine +
+@" ║           |  intend to destroy a building for every wrong guess we make.       /   /   |  < \____/ >   |   \       ║" + Environment.NewLine +
+@" ║           |  They are giving us ten attempts. Make 'em count commander.       /   /    |   < \--/ >    |    \      ║" + Environment.NewLine +
+@" ║           |__________________________________________________________________/    ||||||    \ \/ /     ||||||      ║" + Environment.NewLine +
+@" ║                                                                                   |          \  /   o       |      ║" + Environment.NewLine +
+@" ║                                                                                   |     |     \/   === |    |      ║" + Environment.NewLine +
+@" ║                                                                                   |     |      |o  ||| |    |      ║" + Environment.NewLine +
+@" ║                                                                                   |     \______|   +#* |    |      ║" + Environment.NewLine +
+@" ║                                                                                   |            |o      |    |      ║" + Environment.NewLine +
+@" ║                                                                                    \           |      /     /      ║" + Environment.NewLine +
+@" ║                                                                                    |\__________|o    /     /       ║" + Environment.NewLine +
+@" ║                                                                                    |           |    /     /        ║" + Environment.NewLine;
+            }
+
+            return "";
+        }
+
+        public static string MediumGraphics(int playerLives)
+        {
+
+            switch (playerLives)
+            {
+                case 1: break;
+                case 2: break;
+                case 3: break;
+                case 4: break;
+                case 5: break;
+                case 6: break;
+                default: break;
+            }
+
+            return "";
+        }
+
+        public static string HardGrahpics(int playerLives)
+        {
+
+            switch (playerLives)
+            {
+                case 1: break;
+                case 2: break;
+                case 3: break;
+                case 4: break;
+                default: break;
+            }
+
+            return "";
+        }
+
+        #endregion
     }
 }

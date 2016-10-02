@@ -16,8 +16,7 @@ namespace Hangman_1._0
         {
             Game.IsGameOver = false;
 
-            GFX.DrawTestScreen();
-            //GFX.WelcomeGFX();
+            GFX.WelcomeGFX();
             Console.ReadKey();
             Player.PlayerInformation();
             //Startar musiken.

@@ -10,6 +10,8 @@ namespace Hangman_1._0
     {
         #region Class Variables
 
+        private const bool isUsingExperimentalGraphics = false;
+
         private static bool isGameOver;
         private static int rightGuesses;
         private static int wrongGuesses;
@@ -108,6 +110,38 @@ namespace Hangman_1._0
 
             return tempString;
         }
+
+        public static void ExperimentalPlayingField(string inputMessageToPlayer)
+        {
+            string tempMaskedString = "";
+            string tempGuessedString = "";
+
+            foreach(string s in MaskedWord)
+            {
+                tempMaskedString += s;
+            }
+
+            foreach (string s in wrongLetters)
+            {
+                tempGuessedString += s;
+            }
+
+            switch (Story.DifficultyLevel)
+            {
+                case 1:
+                    GFX.UpdateTopBoxOfScreen(GFX.FormatTopBox(Story.EasyGraphics(Player.PlayerLife)));
+                    GFX.UpdateMiddleBoxOfScreen(GFX.FormatMiddleBox(tempMaskedString, tempGuessedString));
+                    GFX.UpdateBottomBoxOfScreen(GFX.FormatBottomBox(inputMessageToPlayer));
+
+                    Console.SetCursorPosition((int)GFX.BoxPos.BottomBoxWritingLeft, (int)GFX.BoxPos.BottomBoxWritingTop);
+                    break;
+                case 2: break;
+                case 3: break;
+            }
+
+            
+
+        }
         public static void PlayingField()  //  Ritar upp spelplanen, frågar efter bokstav samt returnerar värde.
         {
 
@@ -143,10 +177,15 @@ namespace Hangman_1._0
             if (Player.PlayerLife > 0)
             {
                 {
-                    //  Ritar upp spelplan och frågar efter bokstav.
+                    //  Ritar upp spelplan och frågar efter bokstav. 
+                    string experimentalStringToTellUserOnNextIteration = "  ";
                     do
                     {
-                        PlayingField();
+                        if (isUsingExperimentalGraphics)
+                            ExperimentalPlayingField(experimentalStringToTellUserOnNextIteration);
+                        else
+                            PlayingField();
+
                         input = GuessLetter();
                     } while (input.Length != 1);
                     isRightGuess = false;
@@ -169,16 +208,29 @@ namespace Hangman_1._0
                             if (input == WrongLetters[guessedLetter])
                             {
                                 //  Meddelar att gissningen använts tidigare.
-                                PlayingField();
-                                AlreadyUsedLetter();
+                                if (isUsingExperimentalGraphics)
+                                    experimentalStringToTellUserOnNextIteration = "You already guessed this letter.";
+                                else
+                                {
+                                    PlayingField();
+                                    AlreadyUsedLetter();
+                                }
+
+                                
                                 isRightGuess = true;
                             }
                         }
                         //  Bokstaven är fel men har inte använts tidigare.
                         if (!isRightGuess)
                         {
-                            PlayingField();
-                            WrongGuess();
+                            if (isUsingExperimentalGraphics)
+                                experimentalStringToTellUserOnNextIteration = "This letter is incorrect.";
+                            else
+                            {
+                                PlayingField();
+                                WrongGuess();
+                            }
+                            
                             //  Lagrar gissningen i första fältet för felaktiga gissningar.
                             WrongLetters[WrongGuesses] = input;
                             //  Byter till nästa fält för felaktiga gissningar.
@@ -202,8 +254,13 @@ namespace Hangman_1._0
                         //  Bokstaven är korrekt men har inte använts tidigare.
                         if (!used)
                         {
-                            PlayingField();
-                            RightGuess();
+                            if (isUsingExperimentalGraphics)
+                                experimentalStringToTellUserOnNextIteration = "Correct";
+                            else
+                            {
+                                PlayingField();
+                                RightGuess();
+                            }
                             //  Lagrar gissningen i första fältet för korrekta gissningar.
                             RightLetters[RightGuesses] = input;
                             //  Byter till nästa fält för korrekta gissningar.
@@ -212,8 +269,15 @@ namespace Hangman_1._0
                         else
                         {
                             //  Meddelar att gissningen använts tidigare.
-                            PlayingField();
-                            AlreadyUsedLetter();
+                            if (isUsingExperimentalGraphics)
+                                experimentalStringToTellUserOnNextIteration = "You already Guessed this letter";
+                            else
+                            {
+                                PlayingField();
+                                AlreadyUsedLetter();
+                            }
+
+
                         }
                     }
                 }
@@ -230,7 +294,7 @@ namespace Hangman_1._0
         }
         public static string GuessLetter()
         {
-            Console.Write("\tGuess a letter: ");
+            //Console.Write("\tGuess a letter: ");
             string tempInput = Console.ReadLine().ToUpper();
             return tempInput;
         }
@@ -286,7 +350,11 @@ namespace Hangman_1._0
 
             do
             {
-                PlayingField();
+                if (isUsingExperimentalGraphics)
+                    ExperimentalPlayingField("Welcome back");
+                else
+                    PlayingField();
+
                 Console.Write("\tPlay again (Y/N): ");
                 playAgain = Console.ReadLine().ToUpper();
             } while (playAgain.Length != 1);
