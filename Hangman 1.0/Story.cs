@@ -156,10 +156,10 @@ namespace Hangman_1._0
 @" ║           |                                                                     \      /     ______\\   \          ║" + Environment.NewLine +
 @" ║           |  Smashing! Good job commander. You saved the city.                   \     |____/__  __\____|          ║" + Environment.NewLine +
 @" ║           |  Well, most of it. I will reccomend you for a promotion!              >       [  --~~--  ]             ║" + Environment.NewLine +
- " ║           |  Our oursourced investigation team rated you " + Highscore.Score + "                     /         |(  L   )|              ║" + Environment.NewLine +
+ " ║           |  Our oursourced investigation team rated you " + Highscore.Score + "                      /         |(  L   )|              ║" + Environment.NewLine +
 @" ║           |  points of a scale to Failure to Master Chief Commander Sergeant    /    ___----\  __  /----___        ║" + Environment.NewLine +
 @" ║           |                                                                    /   /   |  < \____/ >   |   \       ║" + Environment.NewLine +
-@" ║           |  Once again. Smashing performance. This will good on your record! /   /    |   < \--/ >    |    \      ║" + Environment.NewLine +
+@" ║           |  Once again. Smashing performance. This will go on your record!   /   /    |   < \--/ >    |    \      ║" + Environment.NewLine +
 @" ║           |__________________________________________________________________/    ||||||    \ \/ /     ||||||      ║" + Environment.NewLine +
 @" ║                                                                                   |          \  /   o       |      ║" + Environment.NewLine +
 @" ║                                                                                   |     |     \/   === |    |      ║" + Environment.NewLine +
@@ -379,7 +379,7 @@ namespace Hangman_1._0
 @" ║           |  terrorists threaten to destroy an entire city unless                /         |(  L   )|              ║" + Environment.NewLine +
 @" ║           |  we decipher their codeword. To make matters worse, they            /    ___----\  __  /----___        ║" + Environment.NewLine +
 @" ║           |  intend to destroy a building for every wrong guess we make.       /   /   |  < \____/ >   |   \       ║" + Environment.NewLine +
-@" ║           |  They are giving us ten attempts. Make 'em count commander.       /   /    |   < \--/ >    |    \      ║" + Environment.NewLine +
+@" ║           |  They are giving us eight attempts. Make 'em count commander.     /   /    |   < \--/ >    |    \      ║" + Environment.NewLine +
 @" ║           |__________________________________________________________________/    ||||||    \ \/ /     ||||||      ║" + Environment.NewLine +
 @" ║                                                                                   |          \  /   o       |      ║" + Environment.NewLine +
 @" ║                                                                                   |     |     \/   === |    |      ║" + Environment.NewLine +

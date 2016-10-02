@@ -144,6 +144,7 @@ namespace Hangman_1._0
                 {
                     case 1:
                         GFX.UpdateTopBoxOfScreen(GFX.FormatTopBox(Story.EasyGraphics(-5000)));
+                        GFX.UpdateMiddleBoxOfScreen(GFX.FormatMiddleBox(tempMaskedString, tempGuessedString));
                         break;
                     case 2:
                         break;
@@ -171,12 +172,6 @@ namespace Hangman_1._0
                 case 2: break;
                 case 3: break;
             }
-
-            if (didThePlayerWin)
-            {
-                GFX.UpdateTopBoxOfScreen(GFX.FormatTopBox(Story.EasyGraphics(1000)));
-            }
-
 
 
         }
@@ -389,7 +384,17 @@ namespace Hangman_1._0
             do
             {
                 if (isUsingExperimentalGraphics)
-                    GFX.UpdateTopBoxOfScreen(GFX.FormatTopBox(Story.EasyGraphics(1000)));
+                {
+                    if (Player.PlayerLife > 0)
+                    {
+                        GFX.UpdateTopBoxOfScreen(GFX.FormatTopBox(Story.EasyGraphics(1000)));
+                    }
+                    else
+                    {
+                        GFX.UpdateTopBoxOfScreen(GFX.FormatTopBox(Story.EasyGraphics(Player.PlayerLife)));
+                    }
+                }
+
                 else
                     PlayingField();
 
