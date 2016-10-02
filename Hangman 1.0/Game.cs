@@ -15,6 +15,7 @@ namespace Hangman_1._0
         private static bool hasStoryInfoBeenShown = false;
         private static string experimentalStringToTellUserOnNextIteration = "  ";
 
+        private static bool didThePlayerWin;
         private static bool isGameOver;
         private static int rightGuesses;
         private static int wrongGuesses;
@@ -63,7 +64,7 @@ namespace Hangman_1._0
 
         public static void GameLoop()      //  Spelloop
         {
-            bool isGameLoopOver;
+            bool isGameLoopOver = false;
             string maskedWordString;
 
 
@@ -81,8 +82,15 @@ namespace Hangman_1._0
                 isGameLoopOver = GameEngine();
                 maskedWordString = TempString(MaskedWord);
             } while (Story.RandomWord != maskedWordString && isGameLoopOver == false);
-            PlayingField();
-            GameResult(isGameLoopOver);
+
+            didThePlayerWin = isGameLoopOver;
+
+            if (!isUsingExperimentalGraphics)
+            {
+                PlayingField();
+                GameResult(isGameLoopOver);
+            }
+
         }
         public static void ArrayInitiation()    //  Initierar alla fält
         {
@@ -131,10 +139,11 @@ namespace Hangman_1._0
 
             if (!hasStoryInfoBeenShown)
             {
+
                 switch (Story.DifficultyLevel)
                 {
                     case 1:
-                        GFX.UpdateTopBoxOfScreen(GFX.FormatTopBox(Story.EasyGraphics(1000)));
+                        GFX.UpdateTopBoxOfScreen(GFX.FormatTopBox(Story.EasyGraphics(-5000)));
                         break;
                     case 2:
                         break;
@@ -163,7 +172,12 @@ namespace Hangman_1._0
                 case 3: break;
             }
 
-            
+            if (didThePlayerWin)
+            {
+                GFX.UpdateTopBoxOfScreen(GFX.FormatTopBox(Story.EasyGraphics(1000)));
+            }
+
+
 
         }
         public static void PlayingField()  //  Ritar upp spelplanen, frågar efter bokstav samt returnerar värde.
@@ -375,7 +389,7 @@ namespace Hangman_1._0
             do
             {
                 if (isUsingExperimentalGraphics)
-                    ExperimentalPlayingField("Welcome back");
+                    GFX.UpdateTopBoxOfScreen(GFX.FormatTopBox(Story.EasyGraphics(1000)));
                 else
                     PlayingField();
 

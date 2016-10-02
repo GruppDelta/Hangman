@@ -146,6 +146,29 @@ namespace Hangman_1._0
         {
             switch (playerLives)
             {
+                case 1000:
+                    Highscore.CalculateScore();
+                    return @"" +
+@" ╔════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗" + Environment.NewLine +
+@" ║                                                                                             ________               ║" + Environment.NewLine +
+@" ║                                                                                            /        \              ║" + Environment.NewLine +
+@" ║            _____________________________________________________________________        __/       (o)\__           ║" + Environment.NewLine +
+@" ║           |                                                                     \      /     ______\\   \          ║" + Environment.NewLine +
+@" ║           |  Smashing! Good job commander. You saved the city.                   \     |____/__  __\____|          ║" + Environment.NewLine +
+@" ║           |  Well, most of it. I will reccomend you for a promotion!              >       [  --~~--  ]             ║" + Environment.NewLine +
+ " ║           |  Our oursourced investigation team rated you " + Highscore.Score + "                     /         |(  L   )|              ║" + Environment.NewLine +
+@" ║           |  points of a scale to Failure to Master Chief Commander Sergeant    /    ___----\  __  /----___        ║" + Environment.NewLine +
+@" ║           |                                                                    /   /   |  < \____/ >   |   \       ║" + Environment.NewLine +
+@" ║           |  Once again. Smashing performance. This will good on your record! /   /    |   < \--/ >    |    \      ║" + Environment.NewLine +
+@" ║           |__________________________________________________________________/    ||||||    \ \/ /     ||||||      ║" + Environment.NewLine +
+@" ║                                                                                   |          \  /   o       |      ║" + Environment.NewLine +
+@" ║                                                                                   |     |     \/   === |    |      ║" + Environment.NewLine +
+@" ║                                                                                   |     |      |o  ||| |    |      ║" + Environment.NewLine +
+@" ║                                                                                   |     \______|   +#* |    |      ║" + Environment.NewLine +
+@" ║                                                                                   |            |o      |    |      ║" + Environment.NewLine +
+@" ║                                                                                    \           |      /     /      ║" + Environment.NewLine +
+@" ║                                                                                    |\__________|o    /     /       ║" + Environment.NewLine +
+@" ║                                                                                    |           |    /     /        ║" + Environment.NewLine;
                 case 8:
                     return @"" +
 @" ╔════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗" + Environment.NewLine +
