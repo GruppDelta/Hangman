@@ -10,7 +10,7 @@ namespace Hangman_1._0
     {
         #region Class Variables
 
-        private const bool isUsingExperimentalGraphics = false;
+        private const bool isUsingExperimentalGraphics = true;
 
         private static bool hasStoryInfoBeenShown = false;
         private static string experimentalStringToTellUserOnNextIteration = "  ";

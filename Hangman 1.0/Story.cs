@@ -45,8 +45,7 @@ namespace Hangman_1._0
                 Console.WriteLine("----------------------------------");
                 Console.WriteLine("\t{   Main Menu:   }\n");
                 Console.WriteLine("\t 1 - Play Game");
-                Console.WriteLine("\t 2 - Tutorial");
-                Console.WriteLine("\t 3 - Highscores\n");
+                Console.WriteLine("\t 2 - Highscores\n");
                 Console.WriteLine("----------------------------------");
                 Console.Write("\tPick storyline: ");
 
@@ -56,8 +55,6 @@ namespace Hangman_1._0
                         GameMenu(playerName);
                         break;
                     case "2":
-                        break;
-                    case "3":
                         ShowHighscore();
                         break;
                     default:
